@@ -5,6 +5,11 @@ from .models import User
 from .forms import UserForm
 
 
+def home(request):
+    user = User.objects.all()
+    context={'User':user}
+    return render('User/register.html',context)
+
 def createUser(request):
     
     form = UserForm()
@@ -32,6 +37,7 @@ def updateUser(request,user_id):
     return render(request,'User/register.html',context)
 
 def deleteUser(request,user_id):
+    
     user_delete=User.objects.get(id=user_id)
     if user_delete.data_user!=request.user:
         return HttpResponseForbidden()

@@ -1,5 +1,5 @@
-{% extends 'User/' %}
-{% load static %}
+{% extends 'headerfooter.html' %}
+{% load crispy_forms_tags %}
 
 {% block custom_style %}
 {% endblock %}
@@ -8,5 +8,6 @@
     <form action="" method="POST">
         {% csrf_token %}
         {{form}}
+        <input type="submit" name="Submit">
     </form>
 {% endblock %}
