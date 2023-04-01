@@ -14,7 +14,7 @@ app_name = 'User'
 urlpatterns = [
     path('api/', include(router.urls)),
     path('', home, name = "home"),
-    path('create_user/',createUser,name="create_user"),
+    path('createUser/',createUser,name="createUser"),
     path('update_user/<user_id>',updateUser,name="update_user")
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

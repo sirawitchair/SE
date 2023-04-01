@@ -6,23 +6,22 @@ from .forms import UserForm
 
 
 def home(request):
-    user = User.objects.all()
-    context={'User':user}
-    return render('User/register.html',context)
+        user = User.objects.all()
+        context={'user':user}
+        return render(request,'User/register.html',context)
 
 def createUser(request):
-    
-    form = UserForm()
     if request.method=='POST':
         form = UserForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/createUser')
+    form = UserForm()
     context={'form':form}
     return render(request,'User/register.html',context)
 
 def updateUser(request,user_id):
-    
     user_update=User.objects.get(id=user_id)
     if user_update.data_user!=request.user:
         return HttpResponseForbidden()

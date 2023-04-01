@@ -9,9 +9,9 @@ CHOICE_PERMIS=(
 )
 
 CHOICE_GENDER=(
-    (0,"Male"),
-    (1,"Female"),
-    (2,"Other")
+    ('m',"Male"),
+    ('f',"Female"),
+    ('o',"Other")
 )
 
 class User(models.Model):
@@ -21,7 +21,7 @@ class User(models.Model):
         password=models.CharField(verbose_name='Password',max_length=20)
         first_name = models.CharField(verbose_name = 'FirstName', max_length = 50)
         last_name = models.CharField(verbose_name = 'LastName', max_length = 50)
-        sex = models.CharField(verbose_name = 'Sex', max_length = 2, choices =CHOICE_GENDER, default = 0)
+        sex = models.CharField(verbose_name = 'Sex', max_length = 2, choices =CHOICE_GENDER, default = 'm')
         birth_day  = models.DateField(verbose_name = 'Birthday')
         mobile  = models.CharField(verbose_name = 'Phonenumber', max_length = 10)
         person_id = models.CharField(verbose_name = 'Person ID', max_length = 13, unique = True)
