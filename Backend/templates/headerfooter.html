@@ -14,9 +14,10 @@
     {% block custom_style %}{% endblock %}
     <title>{% block title %}EVGO{% endblock %}</title>
     <style>
-      header {
+
+      {% comment %} header {
         padding: 18px;
-      }
+      } {% endcomment %}
       {% comment %} footer {
         text-align: center;
         padding: 10px;
@@ -111,13 +112,15 @@
       }
       
       .footer-clean .copyright {
-        margin-top:14px;
+        margin-top:0px;
         margin-bottom:0;
         font-size:13px;
         opacity:0.6;
       }
       .navbar-custom {
         background-color: #23B286;
+        width: 100%;
+        overflow: auto;
       }
       .navbar-custom .navbar-brand,
       .navbar-custom .navbar-text {
@@ -133,9 +136,9 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
+      <nav class="navbar navbar-expand navbar-light fixed-top navbar-custom">
         <div class="container">
-          <a class="navbar-brand" href="#">Start Bootstrap</a>
+          <a class="navbar-brand" href="#">EVGO</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -161,35 +164,35 @@
     {% block content %}
     {% endblock %}
     <footer>
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-sm-4 col-md-3 item">
-                  <h3>About</h3>
-                  
-                      <a>EVGO Co., Ltd. </a>
-                  
-              </div>
-              <div class="col-sm-4 col-md-3 item">
-                  <h3>Contact</h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>About</h3>
                     
-                      <a>02-xxx-xxxx</a>
-                      <a>EVGO@gmail.com</a>
+                        <a>EVGO Co., Ltd. </a>
                     
+                </div>
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Contact</h3>
+                      
+                        <a>02-xxx-xxxx</a>
+                        <a>EVGO@gmail.com</a>
+                      
+                    
+                </div>
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Follow</h3>
+                      
+                        <a>EVGO</a>
+                    
+                </div>
+                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                    <p class="copyright">privacy policy</p>
                   
-              </div>
-              <div class="col-sm-4 col-md-3 item">
-                  <h3>Follow</h3>
-                     
-                      <a>EVGO</a>
-                  
-              </div>
-              <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-                  <p class="copyright">privacy policy</p>
-                
-              </div>
-          </div>
-      </div>
-  </footer>
+                </div>
+            </div>
+        </div>
+    </footer>
       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
