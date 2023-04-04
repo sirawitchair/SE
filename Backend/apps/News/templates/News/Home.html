@@ -46,9 +46,6 @@
       </div>
     </div>
 </nav>
-<form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-  {%csrf_token%}
-   
     <div class="container">
       <img src="https://i.ibb.co/3zYQ7yz/download.jpg"
           width="100%" 
@@ -57,29 +54,53 @@
           style="object-fit:contain"
           />
     </div>
-
+    <br>
+    <br>
     <div class ="container ">
       <h1>How it Works</h1>
     </div>
 
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://i.ibb.co/Bzs9jM2/3254940.png" alt="3254940">
-      <div class="card-body" style="flex-direction: row;">
-        <h3 class="card-text" style="font-weight:bold; text-align:center;">จอง</h3>
-        <p class="card-text" style="font-size: 14px;">เลือกจองรถ EV ได้ที่แอปพลิเคชัน EVGO</p>
-      </div>
-      <img class="card-img-top" src="https://i.ibb.co/gMcjCQ5/5457943.png" alt="3254940">
-      <div class="card-body" style="flex-direction: row;">
-        <p class="card-text">จอง</p>
+    <div class="container" >
+      <div class="card-deck" >
+        {% comment %} <div class="col-sm-3 "> {% endcomment %}
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://i.ibb.co/Bzs9jM2/3254940.png" alt="3254940">
+            <div class="card-body" style="flex-direction: row;">
+              <h3 class="card-text" style="font-weight:bold; text-align:center;">จอง</h3>
+              <p class="card-text" style="font-size: 12px; text-align:center;">สามารถรับรถได้ที่ ??????</p>
+            </div>
+          {% comment %} </div> {% endcomment %}
+        </div>
+        {% comment %} <div class="col-sm-3 "> {% endcomment %}
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://i.ibb.co/gMcjCQ5/5457943.png" alt="5457943" >
+            <div class="card-body" style="flex-direction: row;">
+              <h3 class="card-text" style="font-weight:bold; text-align:center;">รับ</h3>
+              <p class="card-text" style="font-size: 12px; text-align:center;">เลือกจองรถ EV ได้ที่แอปพลิเคชัน EVGO</p>
+            </div>
+          {% comment %} </div> {% endcomment %}
+        </div>
+        {% comment %} <div class="col-sm-3 "> {% endcomment %}
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://i.ibb.co/ZdM4QPW/1768201.png" alt="3254940">
+            <div class="card-body" style="flex-direction: row;">
+              <h3 class="card-text" style="font-weight:bold; text-align:center;">ขี่</h3>
+              <p class="card-text" style="font-size: 12px; text-align:center;">สัมผัสประสบการณ์ EV ที่คุณออกแบบเองได้ 
+                หมดกังวลเรื่องค่าใช้จ่ายจุกจิก</p>
+            </div>
+          {% comment %} </div> {% endcomment %}
+        </div>
+        {% comment %} <div class="col-sm-3 "> {% endcomment %}
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://i.ibb.co/VCbvqx0/4705180.png" alt="3254940">
+            <div class="card-body" style="flex-direction: row;">
+              <h3 class="card-text" style="font-weight:bold; text-align:center;">คืน</h3>
+              <p class="card-text" style="font-size: 12px; text-align:center;">สามารถคืนรถได้ที่ ??????</p>
+            </div>
+          {% comment %} </div> {% endcomment %}
+        </div>
       </div>
     </div>
     
-    
- 
-    
-
-</form>
-
-
 
   {% endblock %}
