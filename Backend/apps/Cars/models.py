@@ -1,7 +1,7 @@
 import datetime
 
 from django.db import models
-from apps.User.models import User
+from apps.Userdata.models import CustomUser
 # Create your models here.
 
 CHOICE_TYPE=(
@@ -43,7 +43,7 @@ class Cars(models.Model):
         seat = models.CharField(verbose_name='Seat',max_length=10)
         modelyear = models.CharField(verbose_name='ModelYear',max_length=10)
         date = models.DateField(verbose_name = 'Date', default=datetime.date.today)
-        data_user_cars = models.ForeignKey(User,on_delete=models.SET_NULL, related_name='CarsUser', blank = True, null = True, verbose_name = 'Recoder')
+        data_user_cars = models.ForeignKey(CustomUser,on_delete=models.SET_NULL, related_name='CarsUser', blank = True, null = True, verbose_name = 'Recoder')
         
         class Meta:
             verbose_name_plural = 'Cars'

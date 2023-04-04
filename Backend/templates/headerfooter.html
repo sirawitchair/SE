@@ -15,10 +15,14 @@
     <title>{% block title %}EVGO{% endblock %}</title>
     <style>
 
-      {% comment %} header {
+      {% comment %} 
+      header {
         padding: 18px;
-      } {% endcomment %}
-      {% comment %} footer {
+      } 
+      {% endcomment %}
+
+      {% comment %} 
+      footer {
         text-align: center;
         padding: 10px;
         background-color: #B8FFD5;
@@ -29,94 +33,13 @@
         text-decoration: none;
         color : black;
         font-weight: bold
-      } {% endcomment %}
-      footer {
-        background-color: #B8FFD5;
-      }
-      .footer-clean {
-        padding:50px 0;
-        background-color:#B8FFD5;
-        color:#4b4c4d;
-      }
-      .footer-clean h3 {
-        margin-top:0;
-        margin-bottom:12px;
-        font-weight:bold;
-        font-size:16px;
-      }
-      
-      .footer-clean ul {
-        padding:0;
-        list-style:none;
-        line-height:1.6;
-        font-size:14px;
-        margin-bottom:0;
-      }
-      
-      .footer-clean ul a {
-        color:inherit;
-        text-decoration:none;
-        opacity:0.8;
-      }
-      
-      .footer-clean ul a:hover {
-        opacity:1;
-      }
-      
-      .footer-clean .item.social {
-        text-align:right;
-      }
-      
-      @media (max-width:767px) {
-        .footer-clean .item {
-          text-align:center;
-          padding-bottom:20px;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .footer-clean .item.social {
-          text-align:center;
-        }
-      }
-      
-      .footer-clean .item.social > a {
-        font-size:24px;
-        width:40px;
-        height:40px;
-        line-height:40px;
-        display:inline-block;
-        text-align:center;
-        border-radius:50%;
-        border:1px solid #ccc;
-        margin-left:10px;
-        margin-top:22px;
-        color:inherit;
-        opacity:0.75;
-      }
-      
-      .footer-clean .item.social > a:hover {
-        opacity:0.9;
-      }
-      
-      @media (max-width:991px) {
-        .footer-clean .item.social > a {
-          margin-top:40px;
-        }
-      }
-      
-      @media (max-width:767px) {
-        .footer-clean .item.social > a {
-          margin-top:10px;
-        }
-      }
-      
-      .footer-clean .copyright {
-        margin-top:0px;
-        margin-bottom:0;
-        font-size:13px;
-        opacity:0.6;
-      }
+      } 
+      {% endcomment %}
+      .main {
+        {% comment %} padding: 16px; {% endcomment %}
+        margin-top:50px;
+        margin-bottom: 100px;}
+        {% comment %} height: 1500px; {% endcomment %}
       .navbar-custom {
         background-color: #23B286;
         width: 100%;
@@ -126,8 +49,31 @@
       .navbar-custom .navbar-text {
           color: black;
       }
+      
 
-
+      .fixedbutton {
+        position: fixed;
+        bottom: 0px;
+        background-color: #B8FFD5;
+    }
+    .navbarss {
+      overflow: hidden;
+      background-color: #B8FFD5;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    {% comment %} .navbarss a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    } {% endcomment %}
+    
       </style>
 
 
@@ -137,63 +83,56 @@
   <body>
     <header>
       <nav class="navbar navbar-expand navbar-light fixed-top navbar-custom">
-        <div class="container">
           <a class="navbar-brand" href="#">EVGO</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/User/register/" >Sign up</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
+                <a class="nav-link" href="/User/login/" >Sign in</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-            </ul>
           </div>
-        </div>
       </nav>
+      
     </header>
+    <div class="main">
     {% block content %}
     {% endblock %}
-    <footer>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>About</h3>
-                    
-                        <a>EVGO Co., Ltd. </a>
-                    
-                </div>
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Contact</h3>
-                      
-                        <a>02-xxx-xxxx</a>
-                        <a>EVGO@gmail.com</a>
-                      
-                    
-                </div>
-                <div class="col-sm-4 col-md-3 item">
-                    <h3>Follow</h3>
-                      
-                        <a>EVGO</a>
-                    
-                </div>
-                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-                    <p class="copyright">privacy policy</p>
-                  
-                </div>
+    </div >
+    <footer >
+        <!-- <div class ="fixedbutton"> -->
+          <div class="navbarss navbar-custom navbar-brand navbar-expand">
+              <div class="row">
+                  <div class="col-sm-4 col-md-3 text-center">
+                      <h3>About</h3>
+                      <a>EVGO Co., Ltd. </a>
+                  </div>
+                  <div class="col-sm-4 col-md-3 text-center">
+                      <h3>Contact</h3>
+                      <a>02-xxx-xxxx<br>EVGO@gmail.com</a>
+                  </div>
+                  <div class="col-sm-4 col-md-3 text-center">
+                      <h3>Follow</h3>
+                      <a>EVGO</a>
+                  </div>
+                  <div class="col-sm-4 col-md-3 text-center ">
+                    <h3>privacy policy</h3>
+                    <a href="#"><i class="icon ion-social-facebook"></i></a>&nbsp;&nbsp;
+                    <a href="#"><i class="icon ion-social-twitter"></i></a>&nbsp;&nbsp;
+                    <a href="#"><i class="icon ion-social-snapchat"></i></a>&nbsp;&nbsp;
+                    <a href="#"><i class="icon ion-social-instagram"></i></a>
+                  </div>
+              </div>
             </div>
-        </div>
-    </footer>
-      
+            <!-- </div> -->
+          </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>

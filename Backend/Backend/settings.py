@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-
+# from apps import User
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,10 +42,11 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "thaidate",
-    
-    'apps.User',
+    'apps.Userdata',
+    #  'Userdata',
     'apps.sa',
     'apps.Cars',
+    'apps.News',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #Authentication backends
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    # 'path.to.auth.module.EmailBackend'
     )
 
 # Internationalization
@@ -131,9 +133,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_URL = "static/"
-
+AUTH_USER_MODEL = 'Userdata.CustomUser'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
@@ -142,6 +143,7 @@ LANGUAGE_CODE = 'th'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
+# AUTH_USER_MODEL = 'User'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
