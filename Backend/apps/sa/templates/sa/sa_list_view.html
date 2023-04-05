@@ -57,14 +57,14 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">วันที่</th>
-                <th scope="col">ชื่อ นามสกุล</th>
-                <th scope="col">เบอร์โทร</th>
+                <th scope="col">Date</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Tel</th>
                 <th scope="col">location</th>                               
                 <th scope="col">description</th>                
-                <th scope="col" class = "d-none d-sm-none d-md-none d-lg-table-cell">แก้ไข</th>
-                <th scope="col" class = "d-none d-sm-none d-md-none d-lg-table-cell">ผู้บันทึก</th>
-                <th scope="col" class = "d-none d-sm-none d-md-table-cell">รับเรื่อง</th>
+                {% comment %} <th scope="col" >Image</th> {% endcomment %}
+                <th scope="col" class = "d-none d-sm-none d-md-none d-lg-table-cell">Recoder</th>
+                <th scope="col" class = "d-none d-sm-none d-md-table-cell">Status</th>
             </tr>
         </thead>
         <tbody>
@@ -73,17 +73,19 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td >{{ obj.date|thaidate:"D d M y" }}</td>
                 <td>{{ obj.full_name }}</td>
-                <td>{{ obj.location }}</td>
                 <td>{{ obj.mobile }}</td>
+                <td>{{ obj.location }}</td>
                 <td>{{ obj.description }}</td>
-                <th scope="col" class = "d-none d-sm-none d-md-none d-lg-table-cell">
-                  {% if not obj.document_approved %}                    
-                    <a href = "{% url 'Patient:updateDocument' obj.id %}" ><i class="fas fa-edit text-warning"></i></a>
+                {% comment %} <td><img src="{{ obj.image.url }}"></td> {% endcomment %}
+                
+                {% comment %} <th scope="col" class = "d-none d-sm-none d-md-none d-lg-table-cell"> {% endcomment %}
+                  {% comment %} {% if not obj.document_approved %}                    
+                    <a href = "{% url 'sa:updateDocument' obj.id %}" ><i class="fas fa-edit text-warning"></i></a>
                   {% endif %}
-                </th>
+                </th> {% endcomment %}
                 <td class = "d-none d-sm-none d-md-none d-lg-table-cell">{{ obj.data_user_sa }}</td>
                 <td class = "d-none d-sm-none d-md-table-cell">
-                    {% if obj.document_approved %}
+                    {% if obj.status %}
                         <i class="fa-solid fa-circle-check text-success"></i>
                     {% endif %}
                 </td>

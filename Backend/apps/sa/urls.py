@@ -2,7 +2,10 @@ from django.urls import path, include
 from rest_framework import routers
 
 from .viewsets import SAViewSet
-from .views import SAListView
+from .views import SAListView,SACreateView
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -14,5 +17,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     # path('test/', TestCreate.as_view(), name = "testcreate"),
     path('', SAListView.as_view(), name = "List"),
+    path('scv/', SACreateView.as_view(), name = "scv"),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

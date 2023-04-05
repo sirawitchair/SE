@@ -1,10 +1,15 @@
 from django.contrib import admin
 
-# from .models import Profile
+from .models import CustomUser
 
 # @admin.register(Profile)
+
+
+@admin.register(CustomUser)
 class UserAdmin(admin.ModelAdmin):
-    # list_display = ['person_id']
-    # fields = ['person_id']
-    # list_per_page = 30
-    pass
+    list_display = ('email', 'first_name','last_name','mobile', 'person_id','last_login')
+    list_display_links = ['email']
+    list_filter = ( 'groups',)
+    search_fields=('email','person_id')
+    ordering = ('-last_login',)
+    save_as = True

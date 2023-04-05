@@ -1,17 +1,17 @@
 from django.http import HttpResponse,HttpResponseForbidden,JsonResponse
 from django.shortcuts import render,redirect
-from django.contrib import messages
+# from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm 
 # from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import user_passes_test
+# from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import Group
 from django.contrib.auth.views import LoginView
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 # from .forms import LoginForm
 # from .utils import authenticate_user
 # from django.contrib.auth.models import User as Us
-
+from django.contrib.auth.decorators import login_required
 # from .models import Profile
 from .forms import CustomUserCreationForm,CustomAuthenticationForm
 from .models import CustomUser
@@ -81,6 +81,40 @@ def logout_view(request):
     logout(request)
     return redirect('/User/login/')
 
+# @login_required
+def update_view(request,profile_id):
+    user_update = CustomUser.objects.get(id=profile_id)
+    if request.method == 'POST':
+        form=CustomAuthenticationForm(request.POST,instance=user_update)
+        if form.is_valid():
+            user=form.save()
+            if user is not None:
+                login(request, user)
+                # Redirect the user to the appropriate dashboard based on their group membership
+                if user.groups.filter(name='SA').exists():
+                    return redirect('/SA/')
+                else:
+                    return redirect('/Cars/')
+    form=CustomUserCreationForm(instance=user_update)
+    context = {"form" : form }
+    return render(request, 'User/profile.html', context)
+
+@login_required
+def update_view(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user=form.save()
+            if user is not None:
+                login(request, user)
+                # Redirect the user to the appropriate dashboard based on their group membership
+                if user.groups.filter(name='SA').exists():
+                    return redirect('/SA/')
+                else:
+                    return redirect('/Cars/')
+    else:
+        form = CustomUserCreationForm(instance=request.user)
+    return render(request, 'User/profile.html', {'form': form})
 # def register_request(request):
 #     if request.method == "POST":
 #         form = NewUserForm(request.POST)
@@ -128,10 +162,10 @@ def logout_view(request):
 #         return render(request,'User/profile.html',context)
     
 # @login_required(login_url='/User/login')
-def createUser(request):
-    form = CustomUserCreationForm()
-    context={'form':form}
-    return render(request,'User/registers.html',context)
+# def createUser(request):
+#     form = CustomUserCreationForm()
+#     context={'form':form}
+#     return render(request,'User/registers.html',context)
 
 # def updateUser(request,user_id):
 #     user_update=Profile.objects.get(id=user_id)

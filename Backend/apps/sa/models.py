@@ -11,6 +11,7 @@ class SA(models.Model):
         image = models.ImageField(verbose_name='Image',upload_to='images/')
         description = models.TextField(verbose_name='Description')
         location = models.CharField(verbose_name='Location',max_length=50)
+        mobile  = models.CharField(verbose_name = 'Phonenumber', max_length = 10)
         date = models.DateField(verbose_name = 'Date', default=datetime.date.today)
         time = models.TimeField(verbose_name='Time',auto_now_add=True)
         data_user_sa = models.ForeignKey(CustomUser,on_delete=models.SET_NULL, related_name='SAUser', blank = True, null = True, verbose_name = 'Recoder')
