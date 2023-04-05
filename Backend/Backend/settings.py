@@ -100,16 +100,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 3, # กำหนดความยาวขั้นต่ำของรหัสผ่านเป็น 8 ตัวอักษร
+        }
     },
 ]
 
@@ -133,7 +127,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 AUTH_USER_MODEL = 'Userdata.CustomUser'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),

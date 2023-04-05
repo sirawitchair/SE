@@ -29,7 +29,7 @@ CHOICE_CAR=(
 
 
 class Cars(models.Model):
- 
+        image = models.ImageField(verbose_name='Image',upload_to='images/')
         model = models.CharField(verbose_name = 'Model', max_length=10)
         acceleration = models.CharField(verbose_name='Acceleration' ,max_length=10)
         topspeed = models.CharField(verbose_name='TopSpeed',max_length=10)

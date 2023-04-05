@@ -1,18 +1,13 @@
-from django.contrib.auth.forms import AuthenticationForm
-from django.forms import ModelForm
 from django import forms 
-# from django.contrib.auth.models import User 
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import get_user_model
-# from .models import Profile
-from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import Group
-from django import forms
+from django.http import JsonResponse
 from django.forms import DateInput,TextInput,EmailInput,Select,CheckboxSelectMultiple
+from django.db.models import Q
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
+from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser
-# from User.models import CustomUser
-
-# User = get_user_model()
 
 CHOICE_GENDER=(
     ('m',"Male"),
@@ -23,6 +18,7 @@ CHOICE_PERMISSION=(
     ('SA',"SA"),
     ('NM',"Nomal")
 )
+GROUP_CHOICES = [(groups.id, groups.name) for groups in Group.objects.all()]
 # class NewUserForm(UserCreationForm):
 #     # email = forms.EmailField(required=True )
 #     class Meta:
@@ -94,13 +90,12 @@ class CustomUserCreationForm(UserCreationForm):
     mobile = forms.CharField(max_length=20,widget=TextInput(attrs={'placeholder': 'Phonenumber','type': 'tel','class': 'form-control form-control-lg'}))
     person_id = forms.CharField(max_length=20,widget=TextInput(attrs={'placeholder': 'Person ID','class': 'form-control form-control-lg'}))
     address = forms.CharField(max_length=100,widget=TextInput(attrs={'class':'form-control form-control-lg'}))
-    permissions = forms.ChoiceField(choices=CHOICE_PERMISSION, widget=forms.Select(attrs={'class':'form-select form-select-lg',}))
-    groups = forms.ModelMultipleChoiceField(queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple())
+    # permissions = forms.ChoiceField(choices=CHOICE_PERMISSION, widget=forms.Select(attrs={'class':'form-select form-select-lg',}))
+    groups = forms.ChoiceField(choices=GROUP_CHOICES, widget=forms.Select(attrs={'class':'form-select form-select-lg',}))
+    # groups = forms.ModelMultipleChoiceField(queryset=Group.objects.all(), widget=forms.RadioSelect())
     class Meta:
         model = CustomUser
-        fields = ('sex', 'birth_day', 'mobile', 'person_id', 'address', 'permissions','first_name','last_name','email','password1','password2')
-
-# class UserForm(ModelForm) :
+        fields = ('email','first_name','last_name','sex', 'birth_day', 'address', 'mobile', 'person_id','password1','password2')
 #     class Meta:
 #         model = Profile
 #         fields = '__all__'

@@ -1,0 +1,68 @@
+{% extends 'headerfooter.html' %}
+{% load crispy_forms_tags %}
+
+{% block custom_style %}
+
+{% endblock %}
+
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+    {%csrf_token%}
+    <section class="h-100 bg-light">
+                  <div class="row g-0">
+                    <div class="col-xl-6">
+                      <div class="card-body p-md-5 text-black">
+                        <h3 class="mb-5 text-uppercase">Registration form</h3>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              {{form.email}}
+                              <label class="form-label" for="form3Example1m">Username</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              {{form.first_name}}
+                              <label class="form-label" for="form3Example1m">First name</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              {{form.last_name}}
+                              <label class="form-label" for="form3Example1n">Last name</label>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                            {{form.email}}
+                            <label class="form-label" for="form3Example1n">Email</label>
+                          </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                            {{form.password1}}
+                            <label class="form-label" for="form3Example1n">Password</label>
+                          </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                            {{form.password2}}
+                            <label class="form-label" for="form3Example1n">Confirm-Password</label>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-end pt-3">
+                          <button type="submit" class="btn btn-warning btn-lg ms-2" onclick="return confirm('ยืนยันส่งข้อมูล?')"><i class="fa fa-save"></i> Submit form</button>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 d-none d-xl-block">
+                        <img src="https://i.ibb.co/2q4j1Tf/1.png"
+                        width="100%" 
+                        height="100%"
+                        alt="Sample photo" class="img-fluid"
+                        />
+                    </div>
+                    </div>
+                    
+        </section>
+      </form>
+{% endblock %}

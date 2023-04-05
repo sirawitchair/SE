@@ -21,5 +21,6 @@ urlpatterns = [
     path("register/", register_view, name="register"),
     path("login/",login_view, name="login"),
     path("logout/",logout_view, name= "logout"),
-    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    # path("check_duplicate/",check_duplicate, name= "check_duplicate"),
+    # path('acheck_duplicate/', include('check_duplicate', namespace='check_duplicate'))
 ]

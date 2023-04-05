@@ -29,11 +29,6 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, password, **extra_fields)
-
-class PermissionSelectField(forms.ModelMultipleChoiceField):
-    def __init__(self, **kwargs):
-        queryset = Group.objects.filter(name__in=['SA', 'NM'])
-        super().__init__(queryset=queryset, widget=forms.CheckboxSelectMultiple, **kwargs)
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True,verbose_name='Email')
     first_name = models.CharField(verbose_name = 'Firstname', max_length = 30)
@@ -47,7 +42,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    permissions = PermissionSelectField()
     groups = models.ManyToManyField(
         'auth.Group',
         blank=True,

@@ -1,11 +1,13 @@
-from django.http import HttpResponse,HttpResponseForbidden
+from django.http import HttpResponse,HttpResponseForbidden,JsonResponse
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm 
 # from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import Group
 from django.contrib.auth.views import LoginView
+from django.views.decorators.csrf import csrf_exempt
 # from .forms import LoginForm
 # from .utils import authenticate_user
 # from django.contrib.auth.models import User as Us
@@ -15,36 +17,45 @@ from .forms import CustomUserCreationForm,CustomAuthenticationForm
 from .models import CustomUser
 
 
-def sa_or_sb_required(user):
-    return user.groups.filter(name__in=['SA', 'NM']).exists()
+def member_check_SA(user):
+    return user.groups.filter(name='SA').exists()
+def member_check_NM(user):
+    return user.groups.filter(name='Nomal').exists()
 
 def register_view(request):
     if request.user.is_authenticated:
         # ผู้ใช้ได้ทำการล็อคอินแล้ว ให้แสดงหน้าเว็บไซต์ที่ผู้ใช้ได้เข้าสู่ระบบไว้
-        return render(request, 'loggedin.html')
+        # return redirect('members_only')
+        if member_check_SA(request.user):
+            return redirect('/SA/')
+        elif member_check_NM(request.user):
+            return redirect('/Cars/')
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
+        print(form)
         if form.is_valid():
             user = form.save()
             groups = form.cleaned_data.get('groups')
             for groups in groups:
                 user.groups.add(groups)
             login(request, user)
-            return redirect('User:createUser')
-    
+            if user.groups.filter(name='SA').exists():
+                    return redirect('/SA/')
+            else:
+                    return redirect('/Cars/')
     form = CustomUserCreationForm()
     return render(request, 'User/register.html', {'form': form})
 
 
 # @login_required
 # @user_passes_test('sa_or_sb_required')
-def home(request):
-    return render(request, 'home.html')
 
 def login_view(request):
     if request.user.is_authenticated:
-        # ผู้ใช้ได้ทำการล็อคอินแล้ว ให้แสดงหน้าเว็บไซต์ที่ผู้ใช้ได้เข้าสู่ระบบไว้
-        return render(request, 'loggedin.html')
+        if member_check_SA(request.user):
+            return redirect('/SA/')
+        elif member_check_NM(request.user):
+            return redirect('/Cars/')
     if request.method == 'POST':
         form = CustomAuthenticationForm(data=request.POST)
         if form.is_valid():
@@ -56,9 +67,9 @@ def login_view(request):
                 login(request, user)
                 # Redirect the user to the appropriate dashboard based on their group membership
                 if user.groups.filter(name='SA').exists():
-                    return redirect('User:createUser')
+                    return redirect('/SA/')
                 else:
-                    return redirect('User:createUser')
+                    return redirect('/Cars/')
             else:
                 # Display an error message if the authentication fails
                 form.add_error(None, 'Invalid email or password.')
@@ -68,7 +79,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('User:login')
+    return redirect('/User/login/')
 
 # def register_request(request):
 #     if request.method == "POST":
