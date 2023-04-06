@@ -1,12 +1,9 @@
 //by Patchareeporn Sakprom 6230300699
 import React, {useState} from "react";
 import { SafeAreaView,Text,StyleSheet,TouchableOpacity,Image,View,Alert, Modal,Pressable,ScrollView } from "react-native";
-
 import { Picker } from '@react-native-picker/picker';
-
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 // import {LocaleConfig} from 'react-native-calendars';
-
 import Icon from 'react-native-vector-icons/FontAwesome5';
 // import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import { ButtonGroup } from '@rneui/themed'
@@ -14,7 +11,6 @@ import { ButtonGroup } from '@rneui/themed'
 const Booking = ({navigation})=>{
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [selectedDate, setSelectedDate] = useState('DD-MM');
-
     const [startDate, setStartDate] = useState('DD / MM / YY');
     const [endDate, setEndDate] = useState('DD / MM / YY');
     // const [selectedDay, setSelectedDay] = useState('Days');
@@ -110,7 +106,6 @@ const Booking = ({navigation})=>{
                                         </TouchableOpacity>
                                     </View>
                                 </Pressable>
-                                
                             </View>
                         </View>
                     </Modal>
@@ -180,9 +175,8 @@ const Booking = ({navigation})=>{
             <View>
                 <View style = {{ flexDirection: 'row', justifyContent: 'flex-end', width: '100%', height: 45, alignItems: 'center' }}>
                     <Icon
-                        raised
                         name='question-circle'
-                        type='font-awesome'
+                        //type='font-awesome'
                         color='black'
                         size={26}
                         onPress={() => navigation.navigate('')}
@@ -197,7 +191,7 @@ const Booking = ({navigation})=>{
                         marginTop: 15,
                         marginBottom: 18,
                     }}>
-                    <ButtonGroup style = {styes.ButtonGroupBooking}
+                    <ButtonGroup
                         containerStyle = {{
                             borderRadius: 15,
                             width: '100%',
@@ -220,13 +214,14 @@ const Booking = ({navigation})=>{
                     <View style = {{ width: '100%' }}>
                         <View style = {{ width: '100%' }}>
                             <TouchableOpacity
-                                contistyle = {{
+                                style = {{
                                     width: '100%',
                                     height: 220,
                                     borderRadius: 15,
                                     justifyContent: 'center',
-                                }}>
-                                onPress={() => navigation.navigate('')}
+                                }}
+                                onPress={() => navigation.navigate()}>
+                                
                                 <Image
                                     source = {require("../Image/teslamodel3.jpg")}
                                     // source={{ uri: 'https://hips.hearstapps.com/hmg-prod/images/2019-tesla-model3-lt-airporthero-low-101-1587061146.jpg?crop=1xw:1xh;center,top&resize=2048:*',
@@ -269,13 +264,14 @@ const Booking = ({navigation})=>{
                     <View style = {{ width: '100%' }}>
                         <View style = {{ width: '100%' }}>
                             <TouchableOpacity
-                                contistyle = {{
+                                style = {{
                                     width: '100%',
                                     height: 220,
                                     borderRadius: 15,
                                     justifyContent: 'center'
-                                }}>
+                                }}
                                 onPress={() => navigation.navigate('')}
+                                >
                                 <Image
                                     source={require("../Image/teslamodelY.jpg")}
                                     style = {{
@@ -316,13 +312,15 @@ const Booking = ({navigation})=>{
                     <View style = {{ width: '100%' }}>
                         <View style = {{ width: '100%' }}>
                             <TouchableOpacity
-                                contistyle = {{
+                                style = {{
                                     width: '100%',
                                     height: 220,
                                     borderRadius: 15,
                                     justifyContent: 'center'
-                                }}>
+                                }}
                                 onPress={() => navigation.navigate('')}
+                                >
+                                
                                 <Image
                                     source = {require("../Image/teslamodelS.jpg")}
                                     style = {{
@@ -352,18 +350,16 @@ const Booking = ({navigation})=>{
                                     backgroundColor: '#000',
                                     marginBottom: 20,
                                     borderRadius: 15,
-
                                 }}
                                 onPress={() => navigation.navigate('bookingSummary')}>
                                 <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-
                     <View style = {{ width: '100%' }}>
                         <View style = {{ width: '100%' }}>
                             <TouchableOpacity
-                                contistyle = {{
+                                style = {{
                                     width: '100%',
                                     height: 220,
                                     borderRadius: 15,
@@ -410,7 +406,7 @@ const Booking = ({navigation})=>{
                     <View style = {{ width: '100%' }}>
                         <View style = {{ width: '100%' }}>
                             <TouchableOpacity
-                                contistyle = {{
+                                style = {{
                                     width: '100%',
                                     height: 220,
                                     borderRadius: 15,
@@ -461,7 +457,7 @@ const Booking = ({navigation})=>{
     )
 }
 
-styes = StyleSheet.create({
+const styes = StyleSheet.create({
     container: {
         flex: 1,
         padding:30,
