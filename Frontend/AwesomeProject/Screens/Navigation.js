@@ -17,6 +17,7 @@ import keyiot from './keyiot';
 import emergency from './emergency';
 import otp from './otp';
 import Setting from './Setting';
+import Language from './Language';
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -142,6 +143,11 @@ const MainStackScreen = () => {
             <Stack.Screen
                 name="aboutus"
                 component={Aboutus}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="language"
+                component={Language}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
