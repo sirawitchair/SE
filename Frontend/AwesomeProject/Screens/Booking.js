@@ -1,8 +1,9 @@
 //by Pattaranan Nuandua 6230300770
 import React from 'react';
-import { StyleSheet, View, Image, Text, Button } from 'react-native';
+import { StyleSheet, View, Image, Text, Button, TouchableOpacity } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
-const Booking =()=>{
+const Booking =({navigation})=>{
     return (
         <View style={styles.container}>
           <View>
@@ -12,8 +13,9 @@ const Booking =()=>{
               </View>
               <Text style = {{fontSize: 16,fontColor:'black',fontWeight: 'bold',marginLeft: 14,marginTop: 38}}>Lalisa</Text>
               <Text style = {{fontSize: 16,fontColor:'black',fontWeight: 'bold',marginLeft: 8,marginTop: 38}}>Manobal</Text>
-              
-              <Image style={styles.logo2} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869385949215/image_38.png'}} />
+              <TouchableOpacity onPress={() => navigation.navigate('setting')}>
+              <Image style={styles.logo2} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869385949215/image_38.png'}}/>
+              </TouchableOpacity>
               <Image style={styles.logo3} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869599846480/image_39.png'}} />
             </View>
           </View>
@@ -30,10 +32,6 @@ const Booking =()=>{
                 onPress={() => console.log('Button Pressed!')}
               />
           </View>
-          <View style={{flexDirection: 'row'}}>
-              <Image style={styles.logo5} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869868286032/image_40.png'}} />
-              <Image style={styles.logo6} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206870170284063/image_15.png'}} />
-            </View>
           </View>
         </View>
       );
