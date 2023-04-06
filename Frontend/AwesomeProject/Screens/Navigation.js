@@ -21,6 +21,10 @@ import Language from './Language';
 import Aboutus from './Aboutus';
 import Login from './Login';
 import Delete from './Delete';
+import Map from './Map';
+import Signup1 from './Signup1';
+import Signup2 from './Signup2';
+
 //import Privacy from './Privacy';
 
 //const Stack = createNativeStackNavigator();
@@ -162,6 +166,21 @@ const MainStackScreen = () => {
             <Stack.Screen
                 name="login"
                 component={Login}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="map"
+                component={Map}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="signup1"
+                component={Signup1}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="signup2"
+                component={Signup2}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
