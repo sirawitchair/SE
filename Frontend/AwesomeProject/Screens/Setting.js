@@ -68,7 +68,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('term&condition')}
+        onPress={()=>navigation.navigate('terms')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
@@ -81,7 +81,6 @@ const Setting = ({navigation}) => {
           <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/271/271228.png'}} style={styles.buttonImageIconStyle} />
         </View>
       </TouchableOpacity>
-
       <TouchableOpacity
         onPress={()=>navigation.navigate('privacypolicy')}
         style={styles.buttonStyle}
@@ -98,7 +97,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('AboutUs')}
+        onPress={()=>navigation.navigate('aboutus')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
@@ -113,7 +112,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('Login')}
+        onPress={()=>navigation.navigate('login')}
         style={{flexDirection: 'row',alignItems: 'center',justifyContent:'center',backgroundColor: 'black',borderWidth: 0.5,borderColor: 'black',height: 40,borderRadius: 5,margin: 100,}}
         activeOpacity={0.5}>
         <View style={{alignItems:'center'}}>
