@@ -25,6 +25,8 @@ import Map from './Map';
 import Signup1 from './Signup1';
 import Signup2 from './Signup2';
 import Forgotpassword from './Forgotpassword';
+import Createnewpassword from './CreateNewPass';
+import Passwordupdate from './PassUpdate';
 
 //import Privacy from './Privacy';
 
@@ -185,8 +187,18 @@ const MainStackScreen = () => {
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="forgotpass"
-                component={Forgotpassword}
+               name="forgotpass"
+               component={Forgotpassword}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="createnewpassword"
+                component={CreateNewPass}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="passwordupdate"
+                component={PassUpdate}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
