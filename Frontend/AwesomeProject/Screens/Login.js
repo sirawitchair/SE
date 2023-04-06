@@ -44,7 +44,7 @@ const Login = ({ navigation }) => {
                         defaultValue={password}
                     />
                 </View>
-                <TouchableOpacity style={styles.smallBlack2} onPress={() => navigation.navigate('ForgotPass')}>
+                <TouchableOpacity style={styles.smallBlack2} onPress={() => navigation.navigate('forgotPass')}>
                     <Text>Forgot Password?</Text>
                 </TouchableOpacity>
             </SafeAreaView>
