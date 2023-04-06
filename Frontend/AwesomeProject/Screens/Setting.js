@@ -23,7 +23,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
       
       <TouchableOpacity
-        //onPress={()=>navigation.navigate('')}
+        onPress={()=>navigation.navigate('editprofile')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
@@ -38,7 +38,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('DeleteAccount')}
+        onPress={()=>navigation.navigate('delete')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
@@ -68,7 +68,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('Term&Condition')}
+        onPress={()=>navigation.navigate('term&condition')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
@@ -83,7 +83,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('Privacy Policy')}
+        onPress={()=>navigation.navigate('privacypolicy')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
