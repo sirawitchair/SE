@@ -139,6 +139,11 @@ const MainStackScreen = () => {
                 component={Setting}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="aboutus"
+                component={Aboutus}
+                options={{ headerShown: false }}
+            />
         </Stack.Navigator>
     )
 }
