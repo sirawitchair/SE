@@ -15,7 +15,7 @@ const Otp = ({ navigation }) => {
                 borderRadius: 10,
                 marginTop:700,
             }}
-            onPress={navigation.navigate('myprofile')}>
+            onPress={() => navigation.navigate('myprofile')}>
                 <Text style={{ color: 'white', alignSelf: 'center' }}>
                     Accept
                 </Text>

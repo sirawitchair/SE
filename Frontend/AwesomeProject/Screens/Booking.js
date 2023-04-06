@@ -301,7 +301,6 @@ const Booking = ({navigation})=>{
                                     backgroundColor: '#000',
                                     marginBottom: 20,
                                     borderRadius: 15,
-
                                 }}
                                 onPress={() => navigation.navigate('bookingSummary')}>
                                 <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>

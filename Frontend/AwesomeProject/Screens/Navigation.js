@@ -14,7 +14,7 @@ import AddCard from './AddCard';
 import Terms from './Terms';
 import Promptpay from './Promptpay';
 import Emergency from './emergency';
-import Otp from './Otp';
+import Otp from './otp';
 import Setting from './Setting';
 import Language from './Language';
 import Aboutus from './Aboutus';
@@ -27,7 +27,7 @@ import Forgotpassword from './Forgotpassword';
 import CreateNewPass from './CreateNewPass';
 import PassUpdate from './PassUpdate';
 import BookingSummary from './BookingSummary';
-import Keyiot from './Keyiot';
+import Keyiot from './keyiot';
 
 //import Privacy from './Privacy';
 
@@ -207,6 +207,7 @@ const MainStackScreen = () => {
                 component={BookingSummary}
                 options={{ headerShown: false }}
             />
+            
         </Stack.Navigator>
     )
 }

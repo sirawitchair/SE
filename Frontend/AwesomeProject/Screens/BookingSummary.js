@@ -213,7 +213,7 @@ const BookingSummary = ({ navigation }) => {
                         alignSelf: 'center',
                         borderRadius: 10,
                     }}
-                    onPress={navigation.navigate('keyiot')}
+                    onPress={() => navigation.navigate('keyiot')}
                     >
                         <Text style={{color:'white',alignSelf:'center'}}>
                             Accept

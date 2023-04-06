@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
+import { BarCodeScanner } from 'barcode-scanner';
 
 export default function ScanQRcode() {
   const [hasPermission, setHasPermission] = React.useState(null);
