@@ -18,6 +18,8 @@ import emergency from './emergency';
 import otp from './otp';
 import Setting from './Setting';
 import Language from './Language';
+import Aboutus from './Aboutus';
+import Login from './Login';
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -153,6 +155,16 @@ const MainStackScreen = () => {
             <Stack.Screen
                 name="delete"
                 component={Delete}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="privacy"
+                component={Privacy}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="login"
+                component={Login}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
