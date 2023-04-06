@@ -13,9 +13,8 @@ import Card from './Card';
 import AddCard from './AddCard';
 import Terms from './Terms';
 import Promptpay from './Promptpay';
-import keyiot from './keyiot';
-import emergency from './emergency';
-import otp from './otp';
+import Emergency from './emergency';
+import Otp from './Otp';
 import Setting from './Setting';
 import Language from './Language';
 import Aboutus from './Aboutus';
@@ -28,6 +27,7 @@ import Forgotpassword from './Forgotpassword';
 import CreateNewPass from './CreateNewPass';
 import PassUpdate from './PassUpdate';
 import BookingSummary from './BookingSummary';
+import Keyiot from './Keyiot';
 
 //import Privacy from './Privacy';
 
@@ -134,17 +134,17 @@ const MainStackScreen = () => {
             />
             <Stack.Screen
                 name="keyiot"
-                component={keyiot}
+                component={Keyiot}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
                 name="emergency"
-                component={emergency}
+                component={Emergency}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
                 name="otp"
-                component={otp}
+                component={Otp}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
@@ -188,8 +188,8 @@ const MainStackScreen = () => {
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-               name="forgotpass"
-               component={Forgotpassword}
+                name="forgotpass"
+                component={Forgotpassword}
                 options={{ headerShown: false }}
             />
             <Stack.Screen

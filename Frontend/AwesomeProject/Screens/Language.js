@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity,StyleSheet,} from 'react-native'
 
 
-const language = () => {
+const Language = () => {
   
   return (
     <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
   },
 });
-export default language
+export default Language

@@ -38,11 +38,10 @@ const MyProfile = ({navigation}) => {
                     </Text>
                 </View>
 
-                <View style = {{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', gap: 10}}>
+                <View style = {{ flexDirection: 'row', marginTop:-350, alignItems: 'center', gap: 10}}>
                     <Icon
                         // style = {styes.iconNoti}
                         style = {{
-
                         }}
                         raised
                         name = 'bell'
@@ -115,7 +114,7 @@ const MyProfile = ({navigation}) => {
                     justifyContent: 'center',
                     marginTop: 20
                 }}
-                onPress={() => navigation.navigate('Booking')}>
+                onPress={() => navigation.navigate('booking')}>
                 <Icon
                     // style = {styes.iconInfo}
                     style = {{
@@ -126,7 +125,7 @@ const MyProfile = ({navigation}) => {
                     type = 'font-awesome'
                     color = 'black'
                     size = {30}
-                    onPress={() => navigation.navigate('Booking')}
+                    onPress={() => navigation.navigate('booking')}
                 />
             </TouchableOpacity>:
 

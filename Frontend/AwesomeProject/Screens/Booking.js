@@ -220,7 +220,7 @@ const Booking = ({navigation})=>{
                                     borderRadius: 15,
                                     justifyContent: 'center',
                                 }}
-                                onPress={() => navigation.navigate()}>
+                                onPress={() => navigation.navigate('bookingSummary')}>
                                 
                                 <Image
                                     source = {require("../Image/teslamodel3.jpg")}
