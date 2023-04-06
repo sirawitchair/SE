@@ -22,8 +22,9 @@ import Aboutus from './Aboutus';
 import Login from './Login';
 import Delete from './Delete';
 import Map from './Map';
-import SignUp1 from './Signup1';
-import SignUp2 from './Signup2';
+import Signup1 from './Signup1';
+import Signup2 from './Signup2';
+import Forgetpassword from './Forgetpassword';
 
 //import Privacy from './Privacy';
 
@@ -175,12 +176,17 @@ const MainStackScreen = () => {
             />
             <Stack.Screen
                 name="signup1"
-                component={SignUp1}
+                component={Signup1}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
                 name="signup2"
-                component={SignUp2}
+                component={Signup2}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="forgetpassword"
+                component={Forgetpassword}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
