@@ -1,4 +1,3 @@
-//by Pattaranan Nuandua 6230300770
 import React from 'react';
 import { StyleSheet, View, Image, Text, Button, TouchableOpacity } from 'react-native';
 import { Navigation } from 'react-native-navigation';
@@ -16,7 +15,7 @@ const Booking =({navigation})=>{
               <TouchableOpacity onPress={() => navigation.navigate('setting')}>
                 <Image style={styles.logo2} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869385949215/image_38.png'}}/>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('aboutus')}>
                 <Image style={styles.logo3} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869599846480/image_39.png'}} />
               </TouchableOpacity>
             </View>

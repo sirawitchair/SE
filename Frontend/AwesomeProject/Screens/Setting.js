@@ -8,7 +8,7 @@ const Setting = ({navigation}) => {
       <View style={{height:75}}>
       </View>
       <TouchableOpacity 
-        onPress={()=>navigation.navigate('Language')}
+        onPress={()=>navigation.navigate('language')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
