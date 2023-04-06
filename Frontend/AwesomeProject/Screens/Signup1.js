@@ -7,17 +7,13 @@ const SignUp1 = ({ navigation }) => {
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
-  const Finish = () => {
-    if (name == '' & userName == '' & password == '' & phone == '') {
-      alert('Please check your Input.');
-    }
+  const Finish = (phone) => {
+    if (name !== '' && userName !== ''&& password !== '' && !isNaN(phone)&& phone.length===10) {{ navigation.navigate('signup2')
+      ;
+    }}
     else {
-      if (name == '') { alert('Please enter your name.'); }
-      else if (userName == '') { alert('Please enter your E-mail.'); }
-      else if (password == '') { alert('Please enter your password.'); }
-      else if (phone == '') { alert('Please enter your phone number.'); }
-      else { navigation.navigate('signup2') }
-
+        alert('Invalid Info.');
+    
     }
   }
   return (
@@ -53,9 +49,10 @@ const SignUp1 = ({ navigation }) => {
         <View style={styles.sectionStyle}>
           <Image source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3059/3059502.png', }} style={styles.imageStyle} />
           <TextInput style={styles.input}
-            placeholder="+6690xxxxxxx"
+            placeholder="090xxxxxxx"
             onChangeText={phone => setPhone({ phone })}
             defaultValue={phone}
+            maxLength={10}
           />
         </View>
       </SafeAreaView>

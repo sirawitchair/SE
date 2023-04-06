@@ -30,7 +30,7 @@ const AddCard = ({componentId }) => {
     const navigation = useNavigation();
     const handleChange = () => {
         if (cardName === '' || !/^\d{13}$/.test(cardNum) || !/^\d{2}\/\d{2}$/.test(expire) || !/^\d{3}$/.test(CVV)) {
-            Alert.alert('Error');
+            Alert.alert('Please enter your information.');
             return;
         }
         else {
@@ -58,10 +58,18 @@ const AddCard = ({componentId }) => {
             navigation.navigate('card')
         }
     };
+    const handleCardNum = (text) => {
+        const numericText = text.replace(/\D/g, '');
+        setCardNum(numericText);
+    };
     const handleExpirationDateChangeText = (text) => {
         const numericText = text.replace(/\D/g, '');
         const formattedText = numericText.replace(/^(\d{2})(\d{0,4})/, '$1/$2');
         setExpire(formattedText);
+    };
+    const handleCVV = (text) => {
+        const numericText = text.replace(/\D/g, '');
+        setCVV(numericText);
     };
 
     return (
@@ -78,7 +86,7 @@ const AddCard = ({componentId }) => {
             <TextInput
                 style={styles.input}
                 placeholder="Card Number"
-                onChangeText={num => setCardNum(num)}
+                onChangeText={handleCardNum}
                 defaultValue={cardNum}
                 maxLength={13}
             //keyboardType="numeric"
@@ -97,7 +105,7 @@ const AddCard = ({componentId }) => {
             <Text style={styles.textMore}>CVV</Text>
             <TextInput
                 placeholder="CVV"
-                onChangeText={cvv => setCVV(cvv)}
+                onChangeText={handleCVV}
                 value={CVV}
                 //keyboardType="numeric"
                 maxLength={3}
