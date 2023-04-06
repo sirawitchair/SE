@@ -226,9 +226,9 @@ const Booking = ({navigation})=>{
                                     borderRadius: 15,
                                     justifyContent: 'center',
                                 }}>
-                                {/* onPress={() => navigation.navigate('')}> */}
+                                onPress={() => navigation.navigate('')}
                                 <Image
-                                    source = {require("../assets/teslamodel3.jpg")}
+                                    source = {require("../Image/teslamodel3.jpg")}
                                     // source={{ uri: 'https://hips.hearstapps.com/hmg-prod/images/2019-tesla-model3-lt-airporthero-low-101-1587061146.jpg?crop=1xw:1xh;center,top&resize=2048:*',
                                     style = {{
                                         width: '100%',
@@ -259,7 +259,7 @@ const Booking = ({navigation})=>{
                                     borderRadius: 15,
 
                                 }}
-                                // onPress={() => console.log('bookingSummary')}>
+                                //onPress={() => console.log('bookingSummary')}>
                                 onPress={() => navigation.navigate('bookingSummary')}>
                                 <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
                             </TouchableOpacity>
@@ -275,9 +275,9 @@ const Booking = ({navigation})=>{
                                     borderRadius: 15,
                                     justifyContent: 'center'
                                 }}>
-                                {/* onPress={() => navigation.navigate('')}> */}
+                                onPress={() => navigation.navigate('')}
                                 <Image
-                                    source={require("../assets/teslamodelY.jpg")}
+                                    source={require("../Image/teslamodelY.jpg")}
                                     style = {{
                                         width: '100%',
                                         height: 220,
@@ -322,9 +322,9 @@ const Booking = ({navigation})=>{
                                     borderRadius: 15,
                                     justifyContent: 'center'
                                 }}>
-                                {/* onPress={() => navigation.navigate('')}> */}
+                                onPress={() => navigation.navigate('')}
                                 <Image
-                                    source = {require("../assets/teslamodelS.jpg")}
+                                    source = {require("../Image/teslamodelS.jpg")}
                                     style = {{
                                         width: '100%',
                                         height: 220,
@@ -371,7 +371,7 @@ const Booking = ({navigation})=>{
                                 }}
                                 onPress={() => navigation.navigate('')}>
                                 <Image
-                                    source = {require("../assets/teslaRoadster.jpg")}
+                                    source = {require("../Image/teslaRoadster.jpg")}
                                     style = {{
                                         width: '100%',
                                         height: 220,
@@ -418,7 +418,7 @@ const Booking = ({navigation})=>{
                                 }}
                                 onPress={() => navigation.navigate('')}>
                                 <Image
-                                    source = {require("../assets/teslamodelX.jpg")}
+                                    source = {require("../Image/teslamodelX.jpg")}
                                     style = {{
                                         width: '100%',
                                         height: 220,
