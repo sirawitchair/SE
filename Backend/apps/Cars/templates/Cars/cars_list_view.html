@@ -1,0 +1,55 @@
+{% extends 'headerfooter.html' %}
+{% load crispy_forms_tags %}
+
+{% block custom_style %}
+
+<style>
+    .imgpadding {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    
+      }
+    .rounded-imgmaind {
+        border-radius: 4%;
+        margin: 0 20px; /* เพิ่มระยะห่างระหว่างรูป */
+        width:300px;
+        height:100px;
+      }
+      
+      .rounded-imgnewsd {
+        border-radius: 4%;
+        margin: 0 20px; /* เพิ่มระยะห่างระหว่างรูป */
+        width:300px;
+        height:100px;
+      }
+    body {
+        padding-top: 70px;
+        margin: 10 px;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+    <div class = "col text-end">
+        {% comment %} <button type="button" class="btn btn-success px-3" onclick="javascript:location.href='{% url 'Patient:RadioWorkbook' %}'"><i class="fa fa-file-excel"></i></button> {% endcomment %}
+        <button type="button" class="btn btn-secondary px-3" onclick="javascript:location.href='{% url 'Cars:ccv' %}'"><i class="fa fa-gear"></i></button>
+        {% comment %} <button type="button" class="btn btn-warning px-3" onclick="javascript:location.href='{% url 'apps.Userdata:logout' %}'"><i class="fa fa-sign-out" aria-hidden="true"></i></button> {% endcomment %}
+    </div>
+
+    <div class="card-deck imgpadding justify-align-center">
+        {% for obj in object_list %}
+            <div class="card col-2"style="width:1rem; " >
+                    <a href="{% url 'Cars:cdt' pk=obj.pk %}" class = "fontblack" >
+                    <img class="card-img-top rounded-imgnews " src="{{ obj.image.url }}" alt="{{ obj.model }}" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{ obj.model }}</h5>
+                      <p class="card-text">{{ obj.modelyear }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{ obj.date }}</small>
+                    </div>
+                  </a>
+              </div>
+                {% endfor %}
+            </div>
+            {% endblock %}

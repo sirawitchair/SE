@@ -1,6 +1,6 @@
 {% extends 'headerfooter.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Sing Up{% endblock %}
+{% block title %}Createcars{% endblock %}
 {% block custom_style %}
     
     <script>
@@ -20,86 +20,89 @@
   <form action="" method="post" enctype="multipart/form-data" >
     {%csrf_token%}
       <section class="h-100 bg-light">
-                <div class="row g-0 ">
                   <div class="col-xl-5">
                     <div class="card-body p-md-5 text-black ">
                       <div class="d-flex justify-content-center pt-3">
-                      <h3 class="mb-5 text-uppercase">Registration form</h3>
+                      <h3 class="mb-5 text-uppercase">Createcars</h3>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          {{form.image}}
+                          <label class="form-label" for="form3Example1">First name</label>
+                        </div>
                       </div>
                           <div class="row">
                           <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                              {{form.first_name}}
-                              <label class="form-label" for="form3Example1">First name</label>
+                              {{form.model}}
+                              <label class="form-label" for="form3Example2">Model</label>
+                            </div>
+                          </div>
+                          
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              {{form.topspeed}}
+                              <label class="form-label" for="form3Example2">Topspeed</label>
                             </div>
                           </div>
                           <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                              {{form.last_name}}
-                              <label class="form-label" for="form3Example2">Last name</label>
+                              {{form.acceleration}}
+                              <label class="form-label" for="form3Example2">Acceration</label>
                             </div>
                           </div>
                           <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                            {{form.person_id}}
-                            <label class="form-label" for="form3Example1n">Person ID</label>
+                            {{form.range}}
+                            <label class="form-label" for="form3Example1n">Range</label>
                           </div>
                           </div>
                           <div class="col-md-6 mb-4">
                             <div class="form-outline">
-                              {{form.birth_day}}
-                              <label class="form-label" for="form3Example1n">Birthday</label>
+                              {{form.horsepower}}
+                              <label class="form-label" for="form3Example1n">Horsepower</label>
                             </div>
                           </div>
                         </div>
                         <div class="form-outline mb-4">
-                          {{form.address}}
-                          <label class="form-label" for="form3Example3">Address</label>
+                          {{form.batterycapacity}}
+                          <label class="form-label" for="form3Example3">Battercapacity</label>
                         </div>
                         <div class="form-outline mb-4">
-                          {{form.mobile}}
-                          <label class="form-label" for="form3Example3">Phonenumber</label>
+                          {{form.chargingtype}}
+                          <label class="form-label" for="form3Example3">Charging type</label>
                         </div>
                           <div class="form-outline mb-4">
-                            {{form.email}}
-                            <label class="form-label" for="form3Example3">Email address</label>
+                            {{form.slowchargetime}}
+                            <label class="form-label" for="form3Example3">Slowchargetime</label>
                           </div>
                           <div class="form-outline mb-4">
-                          {{form.password1}}
-                          <label class="form-label" for="form3Example1n">Password</label>
+                            {{form.fastchargetime}}
+                            <label class="form-label" for="form3Example3">fastchargetime</label>
+                          </div>
+                          <div class="form-outline mb-4">
+                          {{form.cartype}}
+                          <label class="form-label" for="form3Example1n">Car type</label>
                           </div>
 
                           <div class="form-outline mb-4">
-                          {{form.password2}}
-                          <label class="form-label" for="form3Example1n">Confirm-Password</label>
+                          {{form.seat}}
+                          <label class="form-label" for="form3Example1n">Seat</label>
                         </div>
                         <div class="row">
                         <div class="col-md-6 mb-4">
                             <div class="form-outline mb-4">
-                            {{form.sex}}
-                            <label class="form-label" for="form3Example1n">Sex</label>
+                            {{form.modelyear}}
+                            <label class="form-label" for="form3Example1n">Model years</label>
                           </div>
                           </div>
-                          <div class="col-md-6 mb-4">
-                          <div class="form-outline mb-4">
-                          {{form.groups}}
-                          <label class="form-label" for="form3Example1n">Permission</label>
-                        </div>
-                        </div>
                         </div>
                         <div class = "d-flex justify-content-center pt-3">
                           <button type="submit" class="btn btn-warning btn-lg ms-2" onclick="return confirm('ยืนยันส่งข้อมูล?')"><i class="fa fa-save"></i> Submit form</button>
                           </div>
                         </div>
                     </div>
-                    <div class="col-xl-7 d-none d-xl-block">
-                      <img src="https://i.ibb.co/2q4j1Tf/1.png"
-                      width="100%" 
-                      height="100%"
-                      alt="Sample photo" class="img-fluid"
-                      />
-                  </div>
-                  </div>
+                    
                   
                                     
       </section>

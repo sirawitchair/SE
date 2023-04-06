@@ -50,19 +50,19 @@
           color: black;
       }
       
-
+      .navbarss {
+        overflow: hidden;
+        background-color: #B8FFD5;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      
       .fixedbutton {
         position: fixed;
         bottom: 0px;
         background-color: #B8FFD5;
-    }
-    .navbarss {
-      overflow: hidden;
-      background-color: #B8FFD5;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+      }
     
     {% comment %} .navbarss a {
       float: left;
@@ -90,11 +90,15 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               {% if request.user.is_authenticated %}
+              {% comment %} <button onclick="javascript:location.href='{% url 'apps.Userdata:change' %}'" > Change Password</button> {% endcomment %}
               <li class="nav-item">
                 <a class="nav-link" href="/User/login/">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/User/profile/" >Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/User/change/" > Change Password</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/User/logout/">Logout</a>
