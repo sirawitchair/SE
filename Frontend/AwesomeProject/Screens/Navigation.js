@@ -150,6 +150,11 @@ const MainStackScreen = () => {
                 component={Language}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="delete"
+                component={Delete}
+                options={{ headerShown: false }}
+            />
         </Stack.Navigator>
     )
 }
