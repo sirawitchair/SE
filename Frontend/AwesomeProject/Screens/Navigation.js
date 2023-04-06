@@ -133,6 +133,11 @@ const MainStackScreen = () => {
                 component={otp}
                 options={{ headerShown: false }}
             />
+            <Stack.Screen
+                name="setting"
+                component={Setting}
+                options={{ headerShown: false }}
+            />
         </Stack.Navigator>
     )
 }
