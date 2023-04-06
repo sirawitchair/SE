@@ -17,6 +17,7 @@ import keyiot from './keyiot';
 import emergency from './emergency';
 import otp from './otp';
 import Setting from './Setting';
+import Aboutus from './Aboutus';
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

@@ -1,4 +1,3 @@
-//by Pattaranan Nuandua 6230300770
 import React from 'react';
 import { StyleSheet, View, Image, Text, Button, TouchableOpacity } from 'react-native';
 import { Navigation } from 'react-native-navigation';
