@@ -38,7 +38,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('deleteaccount')}
+        onPress={()=>navigation.navigate('delete')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
