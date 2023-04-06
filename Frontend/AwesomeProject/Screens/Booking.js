@@ -226,6 +226,7 @@ const Booking = ({navigation})=>{
                                     borderRadius: 15,
                                     justifyContent: 'center',
                                 }}>
+                                {/* onPress={() => navigation.navigate('')}> */}
                                 <Image
                                     source = {require("../assets/teslamodel3.jpg")}
                                     // source={{ uri: 'https://hips.hearstapps.com/hmg-prod/images/2019-tesla-model3-lt-airporthero-low-101-1587061146.jpg?crop=1xw:1xh;center,top&resize=2048:*',
@@ -236,7 +237,6 @@ const Booking = ({navigation})=>{
                                         overflow: 'hidden',
                                     }}
                                 />
-                                onPress={() => navigation.navigate('setting')}
                             </TouchableOpacity>
                         </View>
                         
