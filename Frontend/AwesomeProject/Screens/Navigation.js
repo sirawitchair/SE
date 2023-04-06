@@ -8,7 +8,7 @@ import Notifications from './Notification';
 import Payment from './Payment';
 import Booking from './Booking';
 import ChargeStation from './ChargeStation';
-//import MyProfile from './MyProfile';
+import MyProfile from './MyProfile';
 import Card from './Card';
 import AddCard from './AddCard';
 import Terms from './Terms';
@@ -21,13 +21,13 @@ import otp from './otp';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const BottomTabNavScreenGroup =()=>{
-    return(
+const BottomTabNavScreenGroup = () => {
+    return (
         <Tab.Navigator
-            screenOptions={({route}) => ({
-                tabBarIcon: ({color, size}) => {
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ color, size }) => {
                     let iconName = '';
-                    switch (route.name){
+                    switch (route.name) {
                         case 'booking':
                             iconName = 'book-online';
                             break;
@@ -40,7 +40,7 @@ const BottomTabNavScreenGroup =()=>{
                     }
                     return <Icon name={iconName} size={size} color='black' />;
                 },
-        })}>
+            })}>
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -55,13 +55,19 @@ const BottomTabNavScreenGroup =()=>{
                 name="chargestation"
                 component={ChargeStation}
             />
-            
-            </Tab.Navigator>
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="myprofile"
+                component={MyProfile}
+            />
+        </Tab.Navigator>
     );
 }
 
-const MainStackScreen =()=>{
-    return(
+const MainStackScreen = () => {
+    return (
         <Stack.Navigator>
             <Stack.Screen
                 options={{
@@ -113,27 +119,27 @@ const MainStackScreen =()=>{
                 component={Promptpay}
             />
             <Stack.Screen
-              name="keyiot"
-              component={keyiot}
-              options={{ headerShown: false }}
+                name="keyiot"
+                component={keyiot}
+                options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="emergency"
-              component={emergency}
-              options={{ headerShown: false }}
+                name="emergency"
+                component={emergency}
+                options={{ headerShown: false }}
             />
-            <Stack.Screen 
-              name = "otp"
-              component = {otp}
-              options={{ headerShown: false }}
+            <Stack.Screen
+                name="otp"
+                component={otp}
+                options={{ headerShown: false }}
             />
         </Stack.Navigator>
     )
 }
-const Navigation =()=>{
-    return(
+const Navigation = () => {
+    return (
         <NavigationContainer>
-            <MainStackScreen/>
+            <MainStackScreen />
         </NavigationContainer>
     )
 }
