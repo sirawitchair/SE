@@ -28,7 +28,7 @@ const SignUp2 = ({navigation}) => {
                 marginVertical: 10,
               }}
           titleStyle={{ fontWeight: 'bold' }}
-          onPress={()=>navigation.navigate('Login')}/>
+          onPress={()=>navigation.navigate('login')}/>
       </SafeAreaView>
     </SafeAreaView>
   )

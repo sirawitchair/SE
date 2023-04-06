@@ -7,7 +7,7 @@ const CreateNewPass = ({navigation}) => {
   const [cpass, setcpass] = useState('');
   const ConfirmPass = () => {
     if (npass === cpass) {
-      navigation.navigate('PassUpdate');
+      navigation.navigate('passwordupdate');
     } else {
       alert('Please check your Password again.');
     }

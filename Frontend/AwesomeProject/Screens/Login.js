@@ -11,7 +11,7 @@ const Login = ({ navigation }) => {
         else {
             if (userName == '') { alert('Please enter your E-mail!.'); }
             else if (password == '') { alert('Please enter your password!.'); }
-            else { navigation.navigate('Instruction') }
+            else { navigation.navigate('booking') }
         }
     }
     return (
@@ -44,7 +44,7 @@ const Login = ({ navigation }) => {
                         defaultValue={password}
                     />
                 </View>
-                <TouchableOpacity style={styles.smallBlack2} onPress={() => navigation.navigate('forgotpass')}>
+                <TouchableOpacity style={styles.smallBlack2} onPress={() => navigation.navigate('forgotass')}>
                     <Text>Forgot Password?</Text>
                 </TouchableOpacity>
             </SafeAreaView>
