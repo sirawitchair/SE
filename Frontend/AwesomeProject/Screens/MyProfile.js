@@ -62,7 +62,7 @@ const MyProfile = ({navigation}) => {
                         type='font-awesome'
                         color='black'
                         size={25}
-                        onPress={() => navigation.navigate('')}
+                        onPress={() => navigation.navigate('setting')}
                     />
                     <Icon
                         // style = {styes.iconInfo}
@@ -75,7 +75,7 @@ const MyProfile = ({navigation}) => {
                         type='font-awesome'
                         color='black'
                         size={26}
-                        onPress={() => navigation.navigate('')}
+                        onPress={() => navigation.navigate('aboutus')}
                     />
                 </View>                     
             </View>
