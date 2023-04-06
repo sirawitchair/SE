@@ -10,7 +10,7 @@ const CreateNewPass = ({navigation}) => {
   const [q3, setQ3] = useState(false);
   const DA = () => {
     if (inputText === "Delete") {
-      navigation.navigate('DeleteAccountComplete');
+      navigation.navigate('login');
     } else {
       alert('Please enter the word "Delete" to proceed.');
     }

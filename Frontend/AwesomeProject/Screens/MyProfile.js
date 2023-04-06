@@ -14,7 +14,7 @@ const MyProfile = ({navigation}) => {
 
     return(
         <SafeAreaView style = {styes.container}>
-            <View style = {{ flex: 5, flexDirection: 'row', justifyContent: 'space-between' , width: '100%' }}>
+            <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' , width: '100%' }}>
                 <View style = {{ flexDirection: 'row',  gap: 15 }}>
                     <Image 
                         // style = {styes.picUser}
@@ -81,19 +81,18 @@ const MyProfile = ({navigation}) => {
 
             <View 
                 style = {{ 
-                    alignItems: 'center',
+                    //alignItems: 'center',
                     justifyContent: 'center',
                     width: '100%', 
                     height: 50,
                     marginTop: 30
-
                 }}>
                 <ButtonGroup
                     containerStyle = {{
                         borderRadius: 15,
                         width: '100%',
                         height: 50,
-
+                        //marginTop:-700,
                     }}
                     selectedButtonStyle={{ backgroundColor: '#000' }}
                     // buttons = {['My booking', 'Completed']}
@@ -112,13 +111,14 @@ const MyProfile = ({navigation}) => {
                     backgroundColor: '#E0E0E0',
                     borderRadius: 15,
                     justifyContent: 'center',
-                    marginTop: 20
+                    marginTop: 20,
                 }}
                 onPress={() => navigation.navigate('booking')}>
                 <Icon
                     // style = {styes.iconInfo}
                     style = {{
                         alignSelf: 'center',
+                        marginTop:-680
                     }}
                     raised
                     name = 'plus'
@@ -128,7 +128,6 @@ const MyProfile = ({navigation}) => {
                     onPress={() => navigation.navigate('booking')}
                 />
             </TouchableOpacity>:
-
             <TouchableOpacity
             style = {{
                 width: '100%',
@@ -136,7 +135,8 @@ const MyProfile = ({navigation}) => {
                 backgroundColor: '#E0E0E0',
                 borderRadius: 15,
                 justifyContent: 'center',
-                marginTop: 20
+                marginTop: 20,
+                marginTop:-680
             }}
             onPress = {() => navigation.navigate('')}>
             </TouchableOpacity>}     
@@ -147,7 +147,7 @@ const MyProfile = ({navigation}) => {
 const styes = StyleSheet.create({
     container:{
         flex:1,
-        padding: 30,
+        //padding: 30,
         backgroundColor: '#fff',
         alignItems: 'center'
     }

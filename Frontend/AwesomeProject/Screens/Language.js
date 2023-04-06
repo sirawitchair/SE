@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity,StyleSheet,} from 'react-native'
 
 
-const Language = () => {
+const Language = ({navigation}) => {
   
   return (
     <View style={styles.container}>
@@ -10,7 +10,8 @@ const Language = () => {
       </View>
       <TouchableOpacity 
         style={styles.buttonStyle}
-        activeOpacity={0.5}>
+        activeOpacity={0.5}
+        onPress={() => navigation.navigate('setting')}>
         <View style={{alignItems:'center',flex:1}}>
           <Text style={styles.buttonTextStyle}>English</Text>
         </View>
@@ -18,7 +19,8 @@ const Language = () => {
       
       <TouchableOpacity 
         style={styles.buttonStyle}
-        activeOpacity={0.5}>
+        activeOpacity={0.5}
+        onPress={() => navigation.navigate('setting')}>
         <View style={{alignItems:'center',flex:1}}>
           <Text style={styles.buttonTextStyle}>ไทย</Text>
         </View>
