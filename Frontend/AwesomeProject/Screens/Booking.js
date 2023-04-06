@@ -14,9 +14,11 @@ const Booking =({navigation})=>{
               <Text style = {{fontSize: 16,fontColor:'black',fontWeight: 'bold',marginLeft: 14,marginTop: 38}}>Lalisa</Text>
               <Text style = {{fontSize: 16,fontColor:'black',fontWeight: 'bold',marginLeft: 8,marginTop: 38}}>Manobal</Text>
               <TouchableOpacity onPress={() => navigation.navigate('setting')}>
-              <Image style={styles.logo2} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869385949215/image_38.png'}}/>
+                <Image style={styles.logo2} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869385949215/image_38.png'}}/>
               </TouchableOpacity>
-              <Image style={styles.logo3} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869599846480/image_39.png'}} />
+              <TouchableOpacity>
+                <Image style={styles.logo3} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869599846480/image_39.png'}} />
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.contentContainer}>
