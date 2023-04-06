@@ -1,105 +1,481 @@
-import React from 'react';
-import { StyleSheet, View, Image, Text, Button, TouchableOpacity } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+//by Patchareeporn Sakprom 6230300699
+import React, {useState} from "react";
+import { SafeAreaView,Text,StyleSheet,TouchableOpacity,Image,View,Alert, Modal,Pressable,ScrollView } from "react-native";
 
-const Booking =({navigation})=>{
-    return (
-        <View style={styles.container}>
-          <View>
-            <View style={{flexDirection: 'row'}}>
-              <View>
-                <Image style={styles.logo1} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206870426124328/UserProfileIcon.png'}} />
-              </View>
-              <Text style = {{fontSize: 16,fontColor:'black',fontWeight: 'bold',marginLeft: 14,marginTop: 38}}>Lalisa</Text>
-              <Text style = {{fontSize: 16,fontColor:'black',fontWeight: 'bold',marginLeft: 8,marginTop: 38}}>Manobal</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('setting')}>
-                <Image style={styles.logo2} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869385949215/image_38.png'}}/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('aboutus')}>
-                <Image style={styles.logo3} source={{uri:'https://cdn.discordapp.com/attachments/1052944598898577468/1093206869599846480/image_39.png'}} />
-              </TouchableOpacity>
+import { Picker } from '@react-native-picker/picker';
+
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+// import {LocaleConfig} from 'react-native-calendars';
+
+import Icon from 'react-native-vector-icons/FontAwesome5';
+// import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import { ButtonGroup } from '@rneui/themed'
+
+const Booking = ({navigation})=>{
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedDate, setSelectedDate] = useState('DD-MM');
+
+    const [startDate, setStartDate] = useState('DD / MM / YY');
+    const [endDate, setEndDate] = useState('DD / MM / YY');
+    // const [selectedDay, setSelectedDay] = useState('Days');
+    
+    const textDate = () => {
+        const [modalDate, setModalDate] = useState(false);
+        const [Date, setDate] = useState('');
+        
+        return (
+            <SafeAreaView >
+        
+                <View >
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalDate}
+                        onRequestClose={() => {
+                            // Alert.alert('Modal has been closed.');
+                            setModalDate(!modalDate);
+                        }}>
+                        <View style = {styes.modalDate}>
+                            <View
+                                style = {{
+                                    width: '100%',
+                                    height: '100%',
+                                    backgroundColor: '#404040',
+                                    borderRadius: 15
+                                    // justifyContent: 'center',
+                                
+                                }}>
+                                <View style = {{ flex:1, borderRadius: 15, backgroundColor: '#000', }} >
+                                    <Text
+                                        style = {{
+                                            color: '#fff',
+                                            fontSize: 16,
+                                            fontWeight: 'bold',
+                                            textAlign: 'center',
+                                            padding: 14
+                                        }}>
+                                            Calender
+                                    </Text>
+                                    <View style = {{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                                        <View>
+                                            <Text style = {{ color: '#ffffff', alignSelf: 'center' }}>Start Date</Text>
+                                            <Text style = {{ color: '#ffffff' }}>{startDate}</Text>
+                                        </View>
+
+                                        <View>
+                                            <Text style = {{ color: '#ffffff', alignSelf: 'center' }}>End Date</Text>
+                                            <Text style = {{ color: '#ffffff' }}>{endDate}</Text> 
+                                        </View>
+
+                                    </View>
+                                </View>
+                                <Pressable
+                                    style={{ flex:4, borderRadius: 15, backgroundColor: '#404040' }}
+                                    onPress={() => setModalDate(!modalDate)}>
+                                    <Calendar
+                                        style = {{
+                                            width: '100%',
+                                            // backgroundColor: ''
+                                        }}
+                                        theme={{
+                                            // backgroundColor: '#fff',
+                                            calendarBackground: '#404040',
+                                            textSectionTitleColor: '#ffffff',
+                                            selectedDayBackgroundColor: '#ffffff',
+                                            selectedDayTextColor: '#ffffff',
+                                            todayTextColor: '#00adf5',
+                                            dayTextColor: '#ffffff',
+                                            textDisabledColor: '#696969',
+                                            selectedDotColor: 'red',
+                                            monthTextColor: '#ffffff'
+                                        }}
+                                        onDayPress={day => {
+                                            setDate(day.dateString);
+                                        }}
+                                        markedDates={{
+                                            [Date]: {Date: true, disableTouchEvent: true}
+                                        }}
+                                    />
+                                    <View style = {{ flexDirection: 'row', justifyContent: 'center', paddingTop: 20 }}>
+                                        <TouchableOpacity
+                                            style = {{
+                                                width: 70,
+                                                padding: 10,
+                                                backgroundColor: '#D9D9D9',
+                                                marginBottom: 20,
+                                                borderRadius: 18
+                                            }}
+                                            onPress={() => setModalDate(!modalDate)}>
+                                            <Text style = {{ color: '#000', alignSelf: 'center'}}>Save</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </Pressable>
+                                
+                            </View>
+                        </View>
+                    </Modal>
+                </View>
+
+                <Pressable
+                    style = {{ flexDirection: 'row', width: '100%' }}
+                    onPress={() => setModalDate(true)}>
+                    <Text style = {{
+                        width: '100%',
+                        flex: 1,
+                        fontSize: 17, 
+                        color: '#fff', 
+                        // fontWeight: 'bold',
+                        paddingStart: 18,
+                    }}>
+                        {/* onPress={() => console.log('Date')}> */}
+                        {selectedDate}
+                    </Text>
+                </Pressable>
+
+            </SafeAreaView>
+        );
+    };
+
+    const textDay = () => {
+        const [selectedDay, setSelectedDay] = useState('1 Day');
+
+        return (
+            // style = {{ flexDirection: 'row', width: '100%' }}
+            <View style = {{ width: '100%'}}>
+                <Picker
+                    mode = 'dropdown'
+                    style = {{
+                        color: '#fff',
+                        width: 214,
+                        borderRadius: 15
+                    }}
+                    selectedValue = {selectedDay}
+                    onValueChange={(itemValue) => setSelectedDay(itemValue)}
+                >
+                    <Picker.Item label="1 Day" value="1 Day" />
+                    <Picker.Item label="3 Days" value="3 Days" />
+                    <Picker.Item label="5 Days" value="5 Days" />
+                    <Picker.Item label="1 Week" value="1 Week" />
+                    <Picker.Item label="1 Month" value="1 Month" />
+                    <Picker.Item label="6 Months" value="6 Months" />
+                    <Picker.Item label="12 Months" value="12 Months" />
+                </Picker>
+                {/* <IconFontAwesome
+                    style = {{
+                        paddingEnd: 18,
+                    }}
+                    raised
+                    name = 'caret-down'
+                    type = 'font-awesome'
+                    color = '#fff'
+                    size = {26}
+                /> */}
             </View>
-          </View>
-          <View style={styles.contentContainer}>
-            <Image
-              source={{ uri: 'https://shorturl.asia/3SWv5' }}
-              resizeMode="contain"
-              style={styles.image}
-            />
-          
-          <View style={styles.buttonContainer}>
-              <Button
-                title="Add Car"
-                onPress={() => console.log('Button Pressed!')}
-              />
-          </View>
-          </View>
-        </View>
-      );
-};
+        );  
+    };
 
-const styles = StyleSheet.create({
+    return(
+        // style={[styes.container,{backgroundColor:"red",padding:30}]} #
+        <SafeAreaView style={styes.container}>
+            <View>
+                <View style = {{ flexDirection: 'row', justifyContent: 'flex-end', width: '100%', height: 45, alignItems: 'center' }}>
+                    <Icon
+                        raised
+                        name='question-circle'
+                        type='font-awesome'
+                        color='black'
+                        size={26}
+                        onPress={() => navigation.navigate('')}
+                    />
+                </View>
+                
+                <View style = {{ 
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '100%', 
+                        height: 50,
+                        marginTop: 15,
+                        marginBottom: 18,
+                    }}>
+                    <ButtonGroup style = {styes.ButtonGroupBooking}
+                        containerStyle = {{
+                            borderRadius: 15,
+                            width: '100%',
+                            height: 50,
+                            backgroundColor: '#000'
+                        }}
+                        selectedButtonStyle = {{ backgroundColor: '#000' }}
+                        buttons = {[{ element: textDate }, { element: textDay }]}
+                        selectedIndex = {selectedIndex}
+                        onPress = {(value) => {
+                        setSelectedIndex(value);
+                        }}
+                    />
+                </View>
+                
+                <ScrollView>
+
+                {/* height: '100%' */}
+                <View style = {{ flexDirection: 'column', gap: 18, width: '100%', marginBottom: 120   }}>
+                    <View style = {{ width: '100%' }}>
+                        <View style = {{ width: '100%' }}>
+                            <TouchableOpacity
+                                contistyle = {{
+                                    width: '100%',
+                                    height: 220,
+                                    borderRadius: 15,
+                                    justifyContent: 'center',
+                                }}>
+                                <Image
+                                    source = {require("../assets/teslamodel3.jpg")}
+                                    // source={{ uri: 'https://hips.hearstapps.com/hmg-prod/images/2019-tesla-model3-lt-airporthero-low-101-1587061146.jpg?crop=1xw:1xh;center,top&resize=2048:*',
+                                    style = {{
+                                        width: '100%',
+                                        height: 220,
+                                        borderRadius: 15,
+                                        overflow: 'hidden',
+                                    }}
+                                />
+                                onPress={() => navigation.navigate('setting')}
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <View
+                            style = {{
+                                position: 'absolute',
+                                zIndex: 1,
+                                flex: 3,
+                                width: '100%',
+                                height: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end'
+                            }}>
+                            <TouchableOpacity
+                                style = {{
+                                    width: 120,
+                                    padding: 10,
+                                    backgroundColor: '#000',
+                                    marginBottom: 20,
+                                    borderRadius: 15,
+
+                                }}
+                                // onPress={() => console.log('bookingSummary')}>
+                                onPress={() => navigation.navigate('bookingSummary')}>
+                                <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    
+                    <View style = {{ width: '100%' }}>
+                        <View style = {{ width: '100%' }}>
+                            <TouchableOpacity
+                                contistyle = {{
+                                    width: '100%',
+                                    height: 220,
+                                    borderRadius: 15,
+                                    justifyContent: 'center'
+                                }}>
+                                {/* onPress={() => navigation.navigate('')}> */}
+                                <Image
+                                    source={require("../assets/teslamodelY.jpg")}
+                                    style = {{
+                                        width: '100%',
+                                        height: 220,
+                                        borderRadius: 15,
+                                        overflow: 'hidden',
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <View
+                            style = {{
+                                position: 'absolute', 
+                                zIndex: 1,
+                                flex: 3,
+                                width: '100%',
+                                height: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end'
+                            }}>
+                            <TouchableOpacity
+                                style = {{
+                                    width: 120,
+                                    padding: 10,
+                                    backgroundColor: '#000',
+                                    marginBottom: 20,
+                                    borderRadius: 15,
+
+                                }}
+                                onPress={() => navigation.navigate('bookingSummary')}>
+                                <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <View style = {{ width: '100%' }}>
+                        <View style = {{ width: '100%' }}>
+                            <TouchableOpacity
+                                contistyle = {{
+                                    width: '100%',
+                                    height: 220,
+                                    borderRadius: 15,
+                                    justifyContent: 'center'
+                                }}>
+                                {/* onPress={() => navigation.navigate('')}> */}
+                                <Image
+                                    source = {require("../assets/teslamodelS.jpg")}
+                                    style = {{
+                                        width: '100%',
+                                        height: 220,
+                                        borderRadius: 15,
+                                        overflow: 'hidden',
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <View
+                            style = {{
+                                position: 'absolute', 
+                                zIndex: 1,
+                                flex: 3,
+                                width: '100%',
+                                height: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end'
+                            }}>
+                            <TouchableOpacity
+                                style = {{
+                                    width: 120,
+                                    padding: 10,
+                                    backgroundColor: '#000',
+                                    marginBottom: 20,
+                                    borderRadius: 15,
+
+                                }}
+                                onPress={() => navigation.navigate('bookingSummary')}>
+                                <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <View style = {{ width: '100%' }}>
+                        <View style = {{ width: '100%' }}>
+                            <TouchableOpacity
+                                contistyle = {{
+                                    width: '100%',
+                                    height: 220,
+                                    borderRadius: 15,
+                                    justifyContent: 'center'
+                                }}
+                                onPress={() => navigation.navigate('')}>
+                                <Image
+                                    source = {require("../assets/teslaRoadster.jpg")}
+                                    style = {{
+                                        width: '100%',
+                                        height: 220,
+                                        borderRadius: 15,
+                                        overflow: 'hidden',
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <View
+                            style = {{
+                                position: 'absolute', 
+                                zIndex: 1,
+                                flex: 3,
+                                width: '100%',
+                                height: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end'
+                            }}>
+                            <TouchableOpacity
+                                style = {{
+                                    width: 120,
+                                    padding: 10,
+                                    backgroundColor: '#000',
+                                    marginBottom: 20,
+                                    borderRadius: 15,
+
+                                }}
+                                onPress={() => navigation.navigate('bookingSummary')}>
+                                <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <View style = {{ width: '100%' }}>
+                        <View style = {{ width: '100%' }}>
+                            <TouchableOpacity
+                                contistyle = {{
+                                    width: '100%',
+                                    height: 220,
+                                    borderRadius: 15,
+                                    justifyContent: 'center'
+                                }}
+                                onPress={() => navigation.navigate('')}>
+                                <Image
+                                    source = {require("../assets/teslamodelX.jpg")}
+                                    style = {{
+                                        width: '100%',
+                                        height: 220,
+                                        borderRadius: 15,
+                                        overflow: 'hidden',
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        
+                        <View
+                            style = {{
+                                position: 'absolute', 
+                                zIndex: 1,
+                                flex: 3,
+                                width: '100%',
+                                height: '100%',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end'
+                            }}>
+                            <TouchableOpacity
+                                style = {{
+                                    width: 120,
+                                    padding: 10,
+                                    backgroundColor: '#000',
+                                    marginBottom: 20,
+                                    borderRadius: 15,
+
+                                }}
+                                onPress={() => navigation.navigate('bookingSummary')}>
+                                <Text style = {{ color: 'white', alignSelf: 'center', }}>Book Now</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                </View>
+                </ScrollView>
+            </View>
+        </SafeAreaView>
+    )
+}
+
+styes = StyleSheet.create({
     container: {
-      flex: 1,
+        flex: 1,
+        padding:30,
+        backgroundColor:"#fff"
     },
-    image: {
-      marginTop:50,
-      width: 250,
-      height: 250,
-      marginLeft:40
+    modalDate: {
+        flex:1,
+        padding:30,
+        flexDirection: 'column',
+        marginTop: 120
     },
-    contentContainer: {
-      position: 'absolute',
-      top: 65,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      padding: 25,
-    },
-      buttonContainer: {
-      flex:1,
-   
-    },
-    
-    buttonContainer: {
-      margin: 50
-    },
-  
-    logo1: {
-      height: 25,
-      width: 25,
-      marginLeft: 25,
-      marginTop: 35
-    },
-    logo2: {
-      height: 23,
-      width: 23,
-      marginLeft: 120,
-      marginTop: 35 
-    },
-      logo3: {
-      height: 23,
-      width: 23,
-      marginLeft: 16,
-      marginTop: 35 
-    },
-  
-    logo5: {
-      height: 26,
-      width: 26,
-      marginTop: 20,
-      marginLeft: 110
-      },
-     logo6: {
-      height: 26,
-      width: 26,
-      marginTop: 20,
-      marginLeft: 70
-      },
-    
-  });  
-
+    // pickerDay: {
+    //     flexDirection: 'row',
+    //     width: '100%'
+    // }
+})
 export default Booking;
