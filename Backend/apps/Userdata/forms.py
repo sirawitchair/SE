@@ -2,8 +2,7 @@ from django import forms
 from django.http import JsonResponse
 from django.forms import DateInput,TextInput,EmailInput,Select,CheckboxSelectMultiple
 from django.db.models import Q
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm,AuthenticationForm,UserCreationForm,UserChangeForm
 from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -39,10 +38,34 @@ GROUP_CHOICES = [(groups.id, groups.name) for groups in Group.objects.all()]
 #         if commit:
 #             user.save()
 #         return user
+class CustomUserChangeForm(UserChangeForm):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'placeholder': 'Email','class': 'form-control form-control-lg','type':'email'})
+        # self.fields['username'].widget.attrs.update({'placeholder': 'Username','class': 'form-control form-control-lg'})
+        # self.fields['password1'].widget.attrs.update({'placeholder': 'Password','class': 'form-control form-control-lg'})
+        # self.fields['password2'].widget.attrs.update({'placeholder': 'Confirmpassword','class': 'form-control form-control-lg'})
+        self.fields['first_name'].widget.attrs.update({'placeholder': 'First Name','class': 'form-control form-control-lg'})
+        self.fields['last_name'].widget.attrs.update({'placeholder': 'Last Name','class': 'form-control form-control-lg'})
+    mobile = forms.CharField(max_length=20,widget=TextInput(attrs={'placeholder': 'Phonenumber','type': 'tel','class': 'form-control form-control-lg'}))
+    address = forms.CharField(max_length=100,widget=TextInput(attrs={'class':'form-control form-control-lg'}))
+    class Meta(UserChangeForm.Meta):
+        model = CustomUser
+        fields = ('email', 'first_name', 'last_name','mobile', 'address')
+        
+class PasswordChangingForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Old Password','class': 'form-control form-control-lg','type':'password'}))
+    new_password1 = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'placeholder': 'New Password','class': 'form-control form-control-lg','type':'password'}))
+    new_password2 = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password','class': 'form-control form-control-lg','type':'password'}))
 
+    class Meta:
+        model = CustomUser
+        fields = ('old_password', 'new_password1', 'new_password2')       
+        
 class CustomAuthenticationForm(AuthenticationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'autofocus': True ,'placeholder': 'Email','class': 'form-control form-control-lg','type':'email'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'autofocus': True ,'placeholder': 'Password','class': 'form-control form-control-lg','type':'password'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={ 'placeholder': 'Email','class': 'form-control form-control-lg','type':'email'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={ 'placeholder': 'Password','class': 'form-control form-control-lg','type':'password'}))
 
     class Meta:
         model = CustomUser

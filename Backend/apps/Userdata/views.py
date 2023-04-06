@@ -1,9 +1,9 @@
 from django.http import HttpResponse,HttpResponseForbidden,JsonResponse
 from django.shortcuts import render,redirect
-# from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib import messages
+# from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 # from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 # from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import Group
 from django.contrib.auth.views import LoginView
@@ -13,7 +13,7 @@ from django.contrib.auth.views import LoginView
 # from django.contrib.auth.models import User as Us
 from django.contrib.auth.decorators import login_required
 # from .models import Profile
-from .forms import CustomUserCreationForm,CustomAuthenticationForm
+from .forms import PasswordChangingForm,CustomUserCreationForm,CustomAuthenticationForm,CustomUserChangeForm
 from .models import CustomUser
 
 
@@ -46,6 +46,19 @@ def register_view(request):
     form = CustomUserCreationForm()
     return render(request, 'User/register.html', {'form': form})
 
+def change_password_view(request):
+    if request.method == 'POST':
+        form = PasswordChangingForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('/User/login/')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangingForm(user=request.user)
+    return render(request, 'User/change_password.html', {'form': form})
 
 # @login_required
 # @user_passes_test('sa_or_sb_required')
@@ -81,28 +94,10 @@ def logout_view(request):
     logout(request)
     return redirect('/User/login/')
 
-# @login_required
-def update_view(request,profile_id):
-    user_update = CustomUser.objects.get(id=profile_id)
-    if request.method == 'POST':
-        form=CustomAuthenticationForm(request.POST,instance=user_update)
-        if form.is_valid():
-            user=form.save()
-            if user is not None:
-                login(request, user)
-                # Redirect the user to the appropriate dashboard based on their group membership
-                if user.groups.filter(name='SA').exists():
-                    return redirect('/SA/')
-                else:
-                    return redirect('/Cars/')
-    form=CustomUserCreationForm(instance=user_update)
-    context = {"form" : form }
-    return render(request, 'User/profile.html', context)
-
 @login_required
 def update_view(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, instance=request.user)
+        form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             user=form.save()
             if user is not None:
@@ -113,8 +108,9 @@ def update_view(request):
                 else:
                     return redirect('/Cars/')
     else:
-        form = CustomUserCreationForm(instance=request.user)
+        form = CustomUserChangeForm(instance=request.user)
     return render(request, 'User/profile.html', {'form': form})
+
 # def register_request(request):
 #     if request.method == "POST":
 #         form = NewUserForm(request.POST)

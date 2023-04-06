@@ -1,0 +1,18 @@
+{% extends 'headerfooter.html' %}
+{% load crispy_forms_tags %}
+
+{% block custom_style %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ car.model }}</h1>
+    <p>{{ car.acceleration }}</p>
+    <p>{{ car.cartype }}</p>
+    <p><a href="{% url 'Cars:cud' pk=car.pk %}">Edit</a></p>
+    <form method="post" action="{% url 'Cars:cdv' pk=car.pk %}">
+      {% csrf_token %}
+      <input type="submit" value="Delete">
+    </form>
+  </div>
+{% endblock %}
