@@ -35,7 +35,7 @@ const BookingSummary = ({navigation})=>{
                     type = 'font-awesome'
                     color = 'black'
                     size = {25}
-                    onPress={() => navigation.navigate('Booking')}
+                    onPress={() => navigation.navigate('booking')}
                 />
                 <Icon
                     // iconInfo
@@ -57,7 +57,7 @@ const BookingSummary = ({navigation})=>{
                             <Text style = {{ color: '#000', fontSize: 20 }} >{carModel}</Text>
                             <View style = {{ paddingTop: 10, paddingBottom: 10 }}>
                                 <Image
-                                    source = {require("../assets/teslamodel3.jpg")}
+                                    source = {require("../Image/teslamodel3.jpg")}
                                     style = {{
                                         width: '100%',
                                         height: 180,
@@ -143,7 +143,7 @@ const BookingSummary = ({navigation})=>{
                                         shadowRadius: 3.84,
                                         elevation: 5,
                                     }}
-                                    onPress={() => navigation.navigate('')}
+                                    onPress={() => navigation.navigate('payment')}
                                     >
                                     <View style = {{ justifyContent: 'center', marginStart: 20 }}>
                                         <Text style = {{

@@ -6,8 +6,6 @@ import {
 import React from 'react';
 import { SafeAreaView,Text,StyleSheet, View, TouchableOpacity,Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-//import visa from '../Image/visa.png'
-//import mastercard from '../Image/mastercard.png'
 
 const mockCardData1 = {
     cardType: 'visa',
@@ -19,11 +17,10 @@ const mockCardData2 = {
     cardNumber: '5173841982013',
     cardHolderName: 'Ta Panit'
 };
-//const visa1 = Image.resolveAssetSource(visa).uri
-//const mastercard1 = Image.resolveAssetSource(mastercard).uri
 const cardImages = {
-    visa: <Image source={{uri:'https://www.brandbuffet.in.th/wp-content/uploads/2022/01/New-Iconic-Visa-Brand.png'}}/>,
-    mastercard: <Image source={{uri:'https://w7.pngwing.com/pngs/23/320/png-transparent-mastercard-credit-card-visa-payment-service-mastercard-company-orange-logo.png'}}/>
+    visa: source = {uri:"https://www.brandbuffet.in.th/wp-content/uploads/2022/01/New-Iconic-Visa-Brand.png"},
+    //visa: require('../Image/visa.png'),
+    mastercard: source = {uri:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/400px-Mastercard_2019_logo.svg.png"},
 };
 
 //const Card =({cardType='', cardNumber='', cardHolderName='', navigation})=>{
@@ -34,12 +31,12 @@ const Card = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <Text style={styles.textCard}>Credit/Debit Card</Text>
             <View style={{marginTop:50}}>
-                <TouchableOpacity style={styles.Box2}>
+                <TouchableOpacity style={styles.Box2} onPress={() => navigation.navigate('bookingSummary')}>
                     <Image style={{width:"20%",height:"23%",marginTop:30,marginLeft:10}} source={cardImages[cardType1]} />
                     <Text style={{marginLeft:110, marginTop:-30,fontWeight:'600',fontSize:18}}>*** *** *** {cardNumber1.slice(-4)}</Text>
                     <Text style={{marginLeft:110, marginTop:0,fontSize:16}}>{cardHolderName1}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.Box2}>
+                <TouchableOpacity style={styles.Box2} onPress={() => navigation.navigate('bookingSummary')}>
                     <Image style={{width:"20%",height:"47%",marginTop:20,marginLeft:15}} source={cardImages[cardType2]} />
                     <Text style={{marginLeft:110, marginTop:-40,fontWeight:'600',fontSize:18}}>*** *** *** {cardNumber2.slice(-4)}</Text>
                     <Text style={{marginLeft:110, marginTop:0,fontSize:16}}>{cardHolderName2}</Text>

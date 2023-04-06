@@ -17,7 +17,7 @@ const Promptpay =()=>{
             <Icon1 size={22} style={{marginLeft:290,marginTop:-22}}name='share-alternative'/>
             <Icon2 size={26} style={{marginLeft:325,marginTop:-24}}name='save-alt'/>
             <Image 
-            source={{uri: 'https://cdn-icons-png.flaticon.com/512/64/64572.png',}}
+            source = {require("../Image/PP.jpg")}
             style={{width:'50%',height:'25%',alignSelf:'center',marginTop:190}}
             />
             <Text 

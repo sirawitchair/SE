@@ -27,6 +27,7 @@ import Signup2 from './Signup2';
 import Forgotpassword from './Forgotpassword';
 import CreateNewPass from './CreateNewPass';
 import PassUpdate from './PassUpdate';
+import BookingSummary from './BookingSummary';
 
 //import Privacy from './Privacy';
 
@@ -199,6 +200,11 @@ const MainStackScreen = () => {
             <Stack.Screen
                 name="passwordupdate"
                 component={PassUpdate}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="bookingSummary"
+                component={BookingSummary}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
