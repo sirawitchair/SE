@@ -18,6 +18,8 @@ import emergency from './emergency';
 import otp from './otp';
 import Setting from './Setting';
 import Language from './Language';
+import Aboutus from './Aboutus';
+import Delete from './Delete';
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

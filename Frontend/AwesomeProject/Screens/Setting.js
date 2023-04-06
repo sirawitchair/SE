@@ -53,7 +53,7 @@ const Setting = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        //onPress={()=>navigation.navigate('')}
+        onPress={()=>navigation.navigate('booking')}
         style={styles.buttonStyle}
         activeOpacity={0.5}>
         <View style={{alignItems:'center',flex:0.15}}>
