@@ -16,6 +16,7 @@ import Promptpay from './Promptpay';
 import keyiot from './keyiot';
 import emergency from './emergency';
 import otp from './otp';
+import Setting from './Setting';
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
