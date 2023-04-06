@@ -50,7 +50,7 @@ const ForgotPass = ({navigation}) => {
                 marginVertical: 10,
               }}
           titleStyle={{ fontWeight: 'bold' }}
-          onPress={()=>navigation.navigate('CreateNewPass')}/>
+          onPress={()=>navigation.navigate('creatnewpass')}/>
       </SafeAreaView>
       </View>
     </SafeAreaView>

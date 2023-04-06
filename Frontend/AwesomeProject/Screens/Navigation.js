@@ -24,7 +24,7 @@ import Delete from './Delete';
 import Map from './Map';
 import Signup1 from './Signup1';
 import Signup2 from './Signup2';
-import Forgetpassword from './Forgetpassword';
+import Forgotpassword from './Forgotpassword';
 
 //import Privacy from './Privacy';
 
@@ -185,8 +185,8 @@ const MainStackScreen = () => {
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="forgetpassword"
-                component={Forgetpassword}
+                name="forgotpass"
+                component={Forgotpassword}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
