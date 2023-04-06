@@ -18,6 +18,8 @@ import emergency from './emergency';
 import otp from './otp';
 import Setting from './Setting';
 import Language from './Language';
+import Aboutus from './Aboutus';
+import EditProfile from './EditProfile';
 
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -148,6 +150,11 @@ const MainStackScreen = () => {
             <Stack.Screen
                 name="language"
                 component={Language}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="editprofile"
+                component={EditProfile}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator>
